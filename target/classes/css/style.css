@@ -1,0 +1,62 @@
+* {
+    -fx-osrs-background-color: #494034;
+    -fx-osrs-gold-color: #ff981f;
+ }
+
+.main-background-panel {
+    -fx-background-color: -fx-osrs-background-color;
+    -fx-border-color: #0e0e0c;
+    -fx-border-width: 1px;
+    -fx-border-style: solid;
+}
+
+.titlebar {
+    -fx-background-color: -fx-osrs-background-color;
+    -fx-border-color: #0e0e0c;
+    -fx-border-width: 0 0 1 0;
+    -fx-border-style: solid;
+}
+
+.runescape-text {
+    -fx-text-fill: -fx-osrs-gold-color;
+    -fx-font-family: "RuneScape UF";
+    -fx-font-size: 12px;
+}
+
+.runescape-button {
+    -fx-background-color: -fx-osrs-background-color;
+    -fx-border-color: black;
+    -fx-border-width: 1;
+    -fx-border-style: solid;
+    -fx-background-color: black;
+}
+
+.close-button {
+    -fx-padding: 5px;
+    -fx-border-insets: 5px;
+    -fx-background-insets: 5px;
+}
+
+#titlebar-title {
+    -fx-font-size: 22px;
+}
+
+.itemhotspot {
+    -fx-background-color: black; 
+}
+
+#testfield {
+    -fx-text-fill: white;
+    -fx-background-color: black; 
+}
+
+.jfx-spinner {
+    /* -jfx-radius only sets the max sizes. We want to ensure that the spinner is forced to be the size
+    we set, so we need to set it's max, pref and min sizes. */
+    real-radius: 15;
+    -jfx-radius: real-radius;
+    -fx-pref-height: real-radius;
+    -fx-pref-width: real-radius;
+    -fx-min-height: real-radius;
+    -fx-min-width: real-radius;
+}
