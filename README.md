@@ -7,3 +7,6 @@ Currently just a loadout programme for the game Oldschool Runescape. It gets inf
 
 ###### A spinner shows while images download. Images are cache locally and so only need to be downloaded once.
 ![Picture](https://i.imgur.com/U3UCvOu.gif)
+
+###### Item drag and drop.
+![Picture](https://i.imgur.com/57xqylJ.gif)

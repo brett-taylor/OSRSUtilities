@@ -25,17 +25,17 @@ public class EquipmentTab extends ItemContainer {
         super(ITEMS_COUNT_X, ITEMS_COUNT_Y);
         hideUnusedEquipmentSlots();
 
-        getItem(1, 0).registerItem(new ItemSprite(Item.load("Void ranger helm")));
-        getItem(0, 1).registerItem(new ItemSprite(Item.load("Ava's assembler")));
-        getItem(1, 1).registerItem(new ItemSprite(Item.load("Necklace of anguish")));
-        getItem(2, 1).registerItem(new ItemSprite(Item.load("Broad bolts")));
-        getItem(0, 2).registerItem(new ItemSprite(Item.load("Dragon crossbow")));
-        getItem(1, 2).registerItem(new ItemSprite(Item.load("Elite void top")));
-        getItem(2, 2).registerItem(new ItemSprite(Item.load("Book of law")));
-        getItem(1, 3).registerItem(new ItemSprite(Item.load("Elite void robe")));
-        getItem(0, 4).registerItem(new ItemSprite(Item.load("Void knight gloves")));
-        getItem(1, 4).registerItem(new ItemSprite(Item.load("Pegasian boots")));
-        getItem(2, 4).registerItem(new ItemSprite(Item.load("Archers ring (i)")));
+        getItem(1, 0).attachItem(new ItemSprite(Item.load("Void ranger helm")));
+        getItem(0, 1).attachItem(new ItemSprite(Item.load("Ava's assembler")));
+        getItem(1, 1).attachItem(new ItemSprite(Item.load("Necklace of anguish")));
+        getItem(2, 1).attachItem(new ItemSprite(Item.load("Broad bolts")));
+        getItem(0, 2).attachItem(new ItemSprite(Item.load("Dragon crossbow")));
+        getItem(1, 2).attachItem(new ItemSprite(Item.load("Elite void top")));
+        getItem(2, 2).attachItem(new ItemSprite(Item.load("Book of law")));
+        getItem(1, 3).attachItem(new ItemSprite(Item.load("Elite void robe")));
+        getItem(0, 4).attachItem(new ItemSprite(Item.load("Void knight gloves")));
+        getItem(1, 4).attachItem(new ItemSprite(Item.load("Pegasian boots")));
+        getItem(2, 4).attachItem(new ItemSprite(Item.load("Archers ring (i)")));
     }
 
     /**

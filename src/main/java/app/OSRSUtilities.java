@@ -2,6 +2,7 @@ package app;
 
 import app.data.DatabaseManager;
 import app.data.ImageManager;
+import app.ui.ItemSpriteDragDropController;
 import app.ui.OSRSUtilitiesWindow;
 import javafx.application.Application;
 import javafx.application.Platform;
@@ -31,11 +32,8 @@ public class OSRSUtilities extends Application {
         window = new OSRSUtilitiesWindow(primaryStage);
         DatabaseManager.start();
 
-        System.out.println(ImageManager.wikiArticleImageUrl("/wiki/Necklace_of_anguish"));
-        System.out.println(ImageManager.wikiArticleImageUrl("/wiki/Dharok's_greataxe"));
-        System.out.println(ImageManager.wikiArticleImageUrl("/wiki/Dragon_scimitar"));
-        System.out.println(ImageManager.wikiArticleImageUrl("/wiki/Rune_bolts"));
-        System.out.println(ImageManager.wikiArticleImageUrl("/wiki/Coins"));
+        ItemSpriteDragDropController.init();
+        window.getScene().setOnMouseReleased(e -> ItemSpriteDragDropController.mouseReleased());
     }
 
     /**

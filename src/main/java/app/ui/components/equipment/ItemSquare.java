@@ -1,5 +1,6 @@
 package app.ui.components.equipment;
 
+import app.ui.ItemSpriteDragDropController;
 import javafx.scene.Cursor;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
@@ -62,18 +63,28 @@ public class ItemSquare extends BorderPane {
     }
 
     /**
-     * Registers a item to the square.
-     * @param item The item to be registed
+     * Attaches a item to the square.
+     * @param item The item to be attached
      */
-    public void registerItem(ItemSprite item) {
+    public void attachItem(ItemSprite item) {
         this.item = item;
         setCenter(item);
+        item.attachToSquare(this);
     }
 
     /**
-     * @return The item registered to the square.
+     * Unattaches any item that is already attached.
      */
-    public ItemSprite getItem() {
+    public void unAttachItem() {
+        item.unAttachFromSquare();
+        setCenter(null);
+        item = null;
+    }
+
+    /**
+     * @return The item attached to the square.
+     */
+    public ItemSprite getAttachedItem() {
         return item;
     }
 
@@ -92,6 +103,12 @@ public class ItemSquare extends BorderPane {
         if (hasItemAttached()) {
             setCursor(Cursor.CLOSED_HAND);
         }
+
+        // Dont allow lodaing items to be swapped.
+        if (getAttachedItem() != null && getAttachedItem().isLoading())
+            return;
+
+        ItemSpriteDragDropController.registerSuccessfullItemSquare(this);
     }
 
     /**
@@ -102,5 +119,6 @@ public class ItemSquare extends BorderPane {
         if (hasItemAttached()) {
             setCursor(Cursor.DEFAULT);
         }
+        ItemSpriteDragDropController.deRegisterSuccessfullItmeSquare();
     }
 }
