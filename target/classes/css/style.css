@@ -1,62 +1,64 @@
-* {
-    -fx-osrs-background-color: #494034;
-    -fx-osrs-gold-color: #ff981f;
+.root {
+    -background-color: #373737;
+    -background-dark-color: #2d2d2d;
+    -background-light-color: #464646;
+    -background-very-light-color: #bdbdbd;
+
+    -accent-color: #ff981f;
+
+    -text-color: white;
+    -text-muted-color: #9ba1a5;
+    -text-muted-dark-color: #6c757d;
+
+    -good-color: #69a55a;
+    -good-secondary-color: #4c7b40;
+    -good-overlay-color:#143d09;
+
+    -bad-color: #b44545;
+    -bad-secondary-color: #9f2f2f;
+    -bad-overlay-color: #510b0b;
+
+    -alert-color: #ff981f;
+    -alert-secondary-color: #c9781a;
+    -alert-overlay-color: #915208;
  }
 
 .main-background-panel {
-    -fx-background-color: -fx-osrs-background-color;
-    -fx-border-color: #0e0e0c;
-    -fx-border-width: 1px;
-    -fx-border-style: solid;
+    -fx-background-color: -background-dark-color;
 }
 
-.titlebar {
-    -fx-background-color: -fx-osrs-background-color;
-    -fx-border-color: #0e0e0c;
-    -fx-border-width: 0 0 1 0;
-    -fx-border-style: solid;
+.invis-scrollpane {
+    -fx-background-color: transparent;
 }
 
-.runescape-text {
-    -fx-text-fill: -fx-osrs-gold-color;
-    -fx-font-family: "RuneScape UF";
-    -fx-font-size: 12px;
+.invis-scrollpane > .viewport {
+    -fx-background-color: transparent;
 }
 
-.runescape-button {
-    -fx-background-color: -fx-osrs-background-color;
-    -fx-border-color: black;
-    -fx-border-width: 1;
-    -fx-border-style: solid;
-    -fx-background-color: black;
+.jfx-progress-bar > .track, .jfx-progress-bar > .bar {
+    -fx-background-radius: 0;
+    -fx-background-insets: 0;
 }
 
-.close-button {
-    -fx-padding: 5px;
-    -fx-border-insets: 5px;
-    -fx-background-insets: 5px;
+.wiki-category-progress-bar > .bar {
+    -fx-border-radius: 10 10 10 10;
+    -fx-background-radius: 10 10 10 10;
 }
 
-#titlebar-title {
-    -fx-font-size: 22px;
+.wiki-category-progress-bar-done > .bar {
+    -fx-background-color: -good-color;
 }
 
-.itemhotspot {
-    -fx-background-color: black; 
+.wiki-category-progress-bar-progress > .bar {
+    -fx-background-color: -alert-color;
 }
 
-#testfield {
-    -fx-text-fill: white;
-    -fx-background-color: black; 
+.wiki-category-progress-bar-no-progress > .bar {
+    -fx-background-color: -bad-color;
 }
 
-.jfx-spinner {
-    /* -jfx-radius only sets the max sizes. We want to ensure that the spinner is forced to be the size
-    we set, so we need to set it's max, pref and min sizes. */
-    real-radius: 15;
-    -jfx-radius: real-radius;
-    -fx-pref-height: real-radius;
-    -fx-pref-width: real-radius;
-    -fx-min-height: real-radius;
-    -fx-min-width: real-radius;
+.wiki-category-progress-bar > .track {
+    -fx-background-color: -background-dark-color;
+    -fx-border-radius: 10 10 10 10;
+    -fx-background-radius: 10 10 10 10;
 }

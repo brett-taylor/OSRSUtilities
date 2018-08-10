@@ -1,5 +1,5 @@
 <component name="ArtifactManager">
-  <artifact type="jar" name="OSRSUtilites:jar">
+  <artifact type="jar" build-on-make="true" name="OSRSUtilites:jar">
     <output-path>$PROJECT_DIR$/out/artifacts/OSRSUtilites_jar</output-path>
     <root id="archive" name="OSRSUtilites.jar">
       <element id="module-output" name="OSRSUtilites" />

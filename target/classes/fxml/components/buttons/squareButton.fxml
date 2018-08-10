@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <center>
+      <StackPane id="rectangleOverlay" prefHeight="50.0" prefWidth="150.0" BorderPane.alignment="CENTER">
+         <children>
+            <Rectangle id="rectangle" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="50.0" stroke="BLACK" strokeType="INSIDE" width="150.0" />
+            <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="300.0">
+               <children>
+                  <BorderPane id="glyphContainer" maxWidth="0.0" prefHeight="200.0" prefWidth="0.0" HBox.hgrow="NEVER" />
+                  <Label id="buttonLabel" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Click me" HBox.hgrow="ALWAYS">
+                     <font>
+                        <Font name="Open Sans Regular" size="16.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+         </children>
+      </StackPane>
+   </center>
+   <cursor>
+      <Cursor fx:constant="HAND" />
+   </cursor>
+</BorderPane>

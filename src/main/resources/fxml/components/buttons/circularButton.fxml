@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.shape.Circle?>
+
+<BorderPane maxHeight="50.0" maxWidth="50.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="50.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <center>
+      <StackPane id="circleOverlay" BorderPane.alignment="CENTER">
+         <children>
+            <Circle id="circle" fill="DODGERBLUE" radius="25.0" stroke="BLACK" strokeType="INSIDE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </Circle>
+         </children>
+      </StackPane>
+   </center>
+</BorderPane>

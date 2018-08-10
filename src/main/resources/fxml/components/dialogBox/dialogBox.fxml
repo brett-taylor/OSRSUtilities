@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <HBox id="mainBackground" alignment="CENTER" layoutX="37.0" layoutY="102.0" prefHeight="100.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <children>
+            <VBox id="innerMainLayout" maxHeight="250.0" maxWidth="500.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="250.0" prefWidth="500.0" style="-fx-background-radius: 0 0 0 0;">
+               <effect>
+                  <DropShadow />
+               </effect>
+               <children>
+                  <AnchorPane id="headingBody" maxHeight="60.0" maxWidth="1.7976931348623157E308" minHeight="60.0" prefHeight="60.0" prefWidth="200.0" style="-fx-background-color: -accent-color;">
+                     <children>
+                        <Label id="headingLabel" style="-fx-text-fill: white;" text="Dialog Box Title" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="15.0">
+                           <font>
+                              <Font name="Open Sans Light" size="18.0" />
+                           </font>
+                        </Label>
+                     </children></AnchorPane>
+                  <AnchorPane id="mainBody" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: -background-color;" VBox.vgrow="ALWAYS" />
+                  <AnchorPane maxHeight="100.0" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Pane maxHeight="40.0" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: -background-color;" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                        <HBox id="buttonRow" alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="0.0" />
+                     </children></AnchorPane>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>

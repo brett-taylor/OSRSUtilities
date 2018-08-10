@@ -1,23 +1,13 @@
 package app.ui;
 
-import app.ui.pages.PopulateDatabaseController;
-import io.datafx.controller.flow.Flow;
-import io.datafx.controller.flow.FlowException;
-import io.datafx.controller.flow.FlowHandler;
-import io.datafx.controller.flow.container.AnimatedFlowContainer;
-import io.datafx.controller.flow.container.ContainerAnimations;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
+import app.ui.components.SideMenu;
+import app.ui.pages.BasePage;
+import com.jfoenix.svg.SVGGlyphLoader;
+import javafx.application.Platform;
+import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
-import javafx.util.Duration;
-import main.java.com.goxr3plus.fxborderlessscene.borderless.BorderlessScene;
 
 import java.io.IOException;
 
@@ -29,17 +19,17 @@ public class OSRSUtilitiesWindow {
     /**
      * The location of the css file.
      */
-    private final static String CSS_LOCATION = "/css/style.css";
+    public final static String CSS_LOCATION = "/css/style.css";
 
     /**
-     * The location of the runescape font face file.
+     * The minimum width of the window.
      */
-    private final static String RUNESCAPE_FONT_LOCATION = "/fonts/runescape.ttf";
+    private final static int MINIMUM_WIDTH = 800;
 
     /**
-     * The titlebar fxml location.
+     * The minimum height of the window.
      */
-    private final static String TITLEBAR_FXML_LOCATION = "/fxml/components/globals/Titlebar.fxml";
+    private final static int MINIMUM_HEIGHT = 500;
 
     /**
      * The main layout container.
@@ -47,14 +37,9 @@ public class OSRSUtilitiesWindow {
     private AnchorPane mainLayout = null;
 
     /**
-     * The titlebar
-     */
-    private AnchorPane titlebar;
-
-    /**
      * The current page being displayed
      */
-    private Node currentPage;
+    private BasePage currentPage;
 
     /**
      * The primary stage
@@ -64,65 +49,71 @@ public class OSRSUtilitiesWindow {
     /**
      * The primary scene
      */
-    private BorderlessScene scene;
+    private Scene scene;
+
+    /**
+     * The sidemenu
+     */
+    private SideMenu sideMenu;
 
     /**
      * The constructor to the main window.
      * @param primaryStage the primary stage that is passed from javafx.
      */
     public OSRSUtilitiesWindow(Stage primaryStage) {
-        // Load RS font and create the frame.
+        // Load fonts
+        Font.loadFont(getClass().getResource("/fonts/OpenSans-Bold.ttf").toExternalForm(), 12);
+        Font.loadFont(getClass().getResource("/fonts/OpenSans-BoldItalic.ttf").toExternalForm(), 12);
+        Font.loadFont(getClass().getResource("/fonts/OpenSans-ExtraBold.ttf").toExternalForm(), 12);
+        Font.loadFont(getClass().getResource("/fonts/OpenSans-ExtraBoldItalic.ttf").toExternalForm(), 12);
+        Font.loadFont(getClass().getResource("/fonts/OpenSans-Italic.ttf").toExternalForm(), 12);
+        Font.loadFont(getClass().getResource("/fonts/OpenSans-Light.ttf").toExternalForm(), 12);
+        Font.loadFont(getClass().getResource("/fonts/OpenSans-LightItalic.ttf").toExternalForm(), 12);
+        Font.loadFont(getClass().getResource("/fonts/OpenSans-Regular.ttf").toExternalForm(), 12);
+        Font.loadFont(getClass().getResource("/fonts/OpenSans-SemiBold.ttf").toExternalForm(), 12);
+        Font.loadFont(getClass().getResource("/fonts/OpenSans-SemiBoldItalic.ttf").toExternalForm(), 12);
+
         this.primaryStage = primaryStage;
-        Font.loadFont(getClass().getResource(RUNESCAPE_FONT_LOCATION).toExternalForm(), 12);
-
         mainLayout = new AnchorPane();
-        scene = new BorderlessScene(primaryStage, StageStyle.UNDECORATED, mainLayout, 500, 500);
-        primaryStage.setScene(scene);
-        scene.removeDefaultCSS();
-        scene.getStylesheets().add(getClass().getResource(CSS_LOCATION).toExternalForm());
         mainLayout.getStyleClass().add("main-background-panel");
-        primaryStage.setWidth(800);
-        primaryStage.setHeight(500);
-        primaryStage.setTitle("OSRS");
+        scene = new Scene(mainLayout);
+        primaryStage.setScene(scene);
+        scene.getStylesheets().add(getClass().getResource(CSS_LOCATION).toExternalForm());
+        primaryStage.setMinWidth(MINIMUM_WIDTH);
+        primaryStage.setMinHeight(MINIMUM_HEIGHT);
+        primaryStage.setTitle("Oldschool Runescape Utilities");
 
-        // Add titlebar
-        try {
-            titlebar = FXMLLoader.load(getClass().getResource(TITLEBAR_FXML_LOCATION));
-            mainLayout.getChildren().add(titlebar);
-            AnchorPane.setTopAnchor(titlebar, 0d);
-            AnchorPane.setLeftAnchor(titlebar, 0d);
-            AnchorPane.setRightAnchor(titlebar, 0d);
-            scene.setMoveControl(titlebar);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        showPage(PopulateDatabaseController.class);
+        sideMenu = new SideMenu();
         primaryStage.show();
     }
 
     /**
      * Shows the given page.
-     * @param startViewControllerClass The page to show.
+     * @param page The page to show.
      */
-    public void showPage(Class<?> startViewControllerClass) {
-        try {
-            Flow flow  = new Flow(startViewControllerClass);
-            FlowHandler flowHandler = flow.createHandler();
-            AnimatedFlowContainer animation = new AnimatedFlowContainer(Duration.ONE, ContainerAnimations.SWIPE_RIGHT);
-
-            if (currentPage != null)
-                mainLayout.getChildren().remove(currentPage);
-
-            currentPage = flowHandler.start(animation);
-            mainLayout.getChildren().add(currentPage);
-            AnchorPane.setBottomAnchor(currentPage, 0d);
-            AnchorPane.setLeftAnchor(currentPage, 0d);
-            AnchorPane.setRightAnchor(currentPage, 0d);
-            AnchorPane.setTopAnchor(currentPage, titlebar.getPrefHeight() + 5);
-        } catch (FlowException e) {
-            e.printStackTrace();
+    public void showPage(BasePage page) {
+        if (currentPage != null) {
+            currentPage.onRemoved();
+            mainLayout.getChildren().remove(currentPage);
         }
+
+        this.currentPage = page;
+        mainLayout.getChildren().add(currentPage);
+        AnchorPane.setBottomAnchor(currentPage, 0d);
+        AnchorPane.setLeftAnchor(currentPage, 0d);
+        AnchorPane.setRightAnchor(currentPage, 0d);
+        AnchorPane.setTopAnchor(currentPage, 0d);
+
+        if (page.shouldShowSideBarMenu()) {
+            if (!mainLayout.getChildren().contains(sideMenu)) {
+                mainLayout.getChildren().add(sideMenu);
+                sideMenu.position();
+                AnchorPane.setLeftAnchor(currentPage, SideMenu.AMOUNT_SHOWN_WHEN_COLLAPSED);
+
+            }
+        }
+
+        page.onLoaded();
     }
 
     /**
@@ -142,7 +133,14 @@ public class OSRSUtilitiesWindow {
     /**
      * @return The main scene
      */
-    public BorderlessScene getScene() {
+    public Scene getScene() {
         return scene;
+    }
+
+    /**
+     * @return The current page being shown.
+     */
+    public BasePage getCurrentPage() {
+        return currentPage;
     }
 }

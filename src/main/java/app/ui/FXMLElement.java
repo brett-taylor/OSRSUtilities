@@ -1,32 +1,39 @@
-package app.ui.pages;
+package app.ui;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Region;
 
 import java.io.IOException;
 
 /**
- * The base page that all pages will be built of.
+ * Basic fxml element that will be loaded and displayed in the center of a border pane.
  * @author Brett Taylor
  */
-public abstract class BasePage extends BorderPane {
+public abstract class FXMLElement extends BorderPane {
+    /**
+     * The parent.
+     */
+    private Region parent;
 
     /**
      * Constructor
-     * @param fxmlAddress The fxml page the base page is based on.
+     * @param fxmlAddress The fxml page.
      */
-    protected BasePage(String fxmlAddress) {
+    protected FXMLElement(String fxmlAddress) {
         try {
-            Node node = FXMLLoader.load(getClass().getResource(fxmlAddress));
-            setCenter(node);
+            parent = FXMLLoader.load(getClass().getResource(fxmlAddress));
+            setCenter(parent);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
     /**
-     * Called when the basepage has been shown
+     * @return the parent.
      */
-    public abstract void onLoaded();
+    public Region getParentElement() {
+        return parent;
+    }
 }

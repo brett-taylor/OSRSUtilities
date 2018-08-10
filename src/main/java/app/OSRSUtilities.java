@@ -1,9 +1,11 @@
 package app;
 
-import app.data.DatabaseManager;
-import app.data.ImageManager;
-import app.ui.ItemSpriteDragDropController;
+import app.data.DataLoadResult;
+import app.data.DataManager;
 import app.ui.OSRSUtilitiesWindow;
+import app.ui.components.DialogBox;
+import app.ui.pages.DownloadsPage;
+import app.ui.pages.TestPage;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.stage.Stage;
@@ -30,10 +32,21 @@ public class OSRSUtilities extends Application {
     @Override
     public void start(Stage primaryStage) {
         window = new OSRSUtilitiesWindow(primaryStage);
-        DatabaseManager.start();
 
-        ItemSpriteDragDropController.init();
-        window.getScene().setOnMouseReleased(e -> ItemSpriteDragDropController.mouseReleased());
+        DataLoadResult result = DataManager.start();
+        if (result != DataLoadResult.SUCCESS) {
+            StringBuilder message = new StringBuilder();
+            message.append("An issue with the database occured. The application will now close.");
+            message.append(System.lineSeparator());
+            message.append("Does this application have access to: " + DataManager.DATA_LOCATION);
+            message.append(System.lineSeparator());
+            message.append(System.lineSeparator());
+            message.append(result.toString());
+
+            DialogBox.showError(message.toString(), true);
+        }
+
+        window.showPage(new TestPage());
     }
 
     /**

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="200.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="200.0" style="-fx-background-color: -background-color;" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <AnchorPane id="header" maxHeight="100.0" minHeight="100.0" prefHeight="100.0" style="-fx-background-color: -accent-color;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Label alignment="BOTTOM_LEFT" style="-fx-text-fill: white;" text="OSRSUtilities" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <padding>
+                  <Insets bottom="10.0" left="10.0" />
+               </padding>
+               <font>
+                  <Font name="Open Sans Regular" size="19.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <ScrollPane id="scrollPane" fitToHeight="true" fitToWidth="true" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="100.0">
+         <styleClass>
+            <String fx:value="invis-scrollpane" />
+            <String fx:value="edge-to-edge" />
+         </styleClass>
+         <content>
+            <VBox maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <VBox id="upperMenu" prefHeight="200.0" prefWidth="100.0" VBox.vgrow="ALWAYS" />
+                  <VBox id="lowerMenu" prefHeight="5.0" prefWidth="100.0" />
+               </children></VBox>
+         </content>
+      </ScrollPane>
+      <Pane id="buttonConsumer" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+   </children>
+   <effect>
+      <DropShadow />
+   </effect>
+</AnchorPane>
