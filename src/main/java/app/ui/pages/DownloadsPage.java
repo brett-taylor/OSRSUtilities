@@ -36,10 +36,7 @@ public class DownloadsPage extends BasePage {
      */
     public DownloadsPage() {
         super("/fxml/pages/DatabaseSettings.fxml", true);
-    }
 
-    @Override
-    public void onLoaded() {
         CircularButton downloadAll = new CircularButton();
         downloadAll.setBackgroundColor(CSSColorParser.parseColor("-background-dark-color"));
         downloadAll.setBackgroundHoverColor(CSSColorParser.parseColor("-background-color"));
@@ -69,6 +66,10 @@ public class DownloadsPage extends BasePage {
     }
 
     @Override
+    public void onLoaded() {
+    }
+
+    @Override
     public void onRemoved() {
         for (DownloadCategories category : DownloadCategories.values()) {
             category.clearAllListenersToOnCategoryDownloadUpdateEvent();
@@ -83,7 +84,7 @@ public class DownloadsPage extends BasePage {
 
         CircularButton close = CircularButton.regularButton();
         close.setOnClicked(DialogBox::close);
-        close.setGlyph(FontAwesomeIcon.TIMES, CSSColorParser.parseColor("-alert-overlay-color"));
+        close.setGlyph(FontAwesomeIcon.TIMES, null);
 
         Label helpText = new Label("By downloading all of the categories you will have access to all of the information. " +
                 "Alternatively, you can resync the current categories you have downloaded this will update these categories to match the latest Runescape information."

@@ -7,61 +7,37 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a43b58ca-238d-43a8-bb37-60e4e9dba536" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/app/data/DatabaseSQLErrorType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/app/data/categories/DownloadCategories.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/app/data/categories/DownloadCategoriesSave.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/app/data/categories/DownloadCategoriesType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/app/data/models/Monster.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/app/data/tables/BlacklistTable.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/app/data/tables/MonsterTable.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/app/data/wiki/WikiBlacklist.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/app/data/wiki/WikiListValues.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/app/ui/components/SideMenu.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/app/ui/components/buttons/CircularButton.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/app/ui/pages/DownloadsPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/OSRSUtilites_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/OSRSUtilites_jar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/app/ui/components/BlackListView.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/app/ui/components/loadouts/EquipmentTab.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/app/ui/components/loadouts/InventoryTab.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/app/ui/components/loadouts/ItemContainer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/app/ui/components/loadouts/ItemDragDropController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/app/ui/components/loadouts/ItemHotspot.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/app/ui/components/loadouts/ItemSprite.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/app/ui/pages/LoadoutPage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/app/OSRSUtilities.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/OSRSUtilities.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/data/DataLoadResult.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/data/DataLoadResult.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/data/DataManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/data/DataManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/data/DatabaseSQLExecuteResult.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/data/DatabaseSQLExecuteResult.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/data/DownloadCategories.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/data/DownloadCategoriesStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/data/categories/DownloadCategoriesStatus.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/app/data/ImageManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/data/ImageManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/data/SQLStatement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/data/SQLStatement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/data/events/OnCategoryDownloadUpdateEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/data/events/OnCategoryDownloadUpdateEvent.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/app/data/models/Item.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/data/models/Item.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/data/tables/CategoryTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/data/tables/CategoryTable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/data/tables/ItemTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/data/tables/ItemTable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/ui/FXMLElement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/ui/FXMLElement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/data/models/Monster.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/data/models/Monster.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/data/wiki/WikiBlacklist.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/data/wiki/WikiBlacklist.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/app/ui/OSRSUtilitiesWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/ui/OSRSUtilitiesWindow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/ui/components/BufferingImage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/ui/components/BufferingImage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/ui/components/BufferingImage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/ui/components/WikiImage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/app/ui/components/CategoryDownloadButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/ui/components/CategoryDownloadButton.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/ui/components/CircularButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/ui/components/buttons/SquareButton.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/app/ui/components/DialogBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/ui/components/DialogBox.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/ui/pages/BasePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/ui/pages/BasePage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/ui/pages/DatabaseSettings.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/ui/components/SideMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/ui/components/SideMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/ui/components/buttons/CircularButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/ui/components/buttons/CircularButton.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/ui/components/buttons/SquareButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/ui/components/buttons/SquareButton.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/ui/pages/DownloadsPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/ui/pages/DownloadsPage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/app/ui/pages/TestPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/ui/pages/TestPage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/app/utils/CSSColorParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/utils/CSSColorParser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/wiki/WikiAPICall.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/data/wiki/WikiAPICall.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/wiki/WikiList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/data/wiki/WikiList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/wiki/WikiListValues.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/fonts/runescape.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/MainWindow.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/components/globals/Titlebar.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/pages/CharacterSelection.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/pages/PopulateDatabase.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/images/Armadyl_godsword_detail.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/defaults/OSRSUtilitiesDatabase.sqlite" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/defaults/OSRSUtilitiesDatabase.sqlite" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/components/dialogBox/dialogBox.fxml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/fonts/runescape.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/fxml/MainWindow.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/fxml/components/globals/Titlebar.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/fxml/pages/CharacterSelection.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/fxml/pages/PopulateDatabase.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/images/Armadyl_godsword_detail.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/defaults/OSRSUtilitiesDatabase.sqlite" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/defaults/OSRSUtilitiesDatabase.sqlite" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/fxml/components/dialogBox/dialogBox.fxml" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -72,31 +48,17 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/OSRSUtilites$OSRSUtilities.ic" NAME="OSRSUtilities Coverage Results" MODIFIED="1533919302793" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+    <SUITE FILE_PATH="coverage/OSRSUtilites$OSRSUtilities.ic" NAME="OSRSUtilities Coverage Results" MODIFIED="1534122893470" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>app.*</FILTER>
     </SUITE>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="DialogBox.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/app/ui/components/DialogBox.java">
+      <file leaf-file-name="LoadoutPage.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/app/ui/pages/LoadoutPage.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="229" column="32" selection-start-line="229" selection-start-column="32" selection-end-line="229" selection-end-column="32" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#2393#2530#0" expanded="true" />
-                <element signature="e#2529#2530#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SquareButton.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/app/ui/components/buttons/SquareButton.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="468">
-              <caret line="119" column="28" lean-forward="true" selection-start-line="119" selection-start-column="28" selection-end-line="119" selection-end-column="28" />
+            <state relative-caret-position="408">
+              <caret line="36" column="42" lean-forward="true" selection-start-line="36" selection-start-column="42" selection-end-line="36" selection-end-column="42" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -104,11 +66,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DownloadsPage.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/app/ui/pages/DownloadsPage.java">
+      <file leaf-file-name="ItemHotspot.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/app/ui/components/loadouts/ItemHotspot.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="587">
-              <caret line="153" column="83" selection-start-line="153" selection-start-column="83" selection-end-line="153" selection-end-column="83" />
+            <state relative-caret-position="364">
+              <caret line="34" column="100" selection-start-line="34" selection-start-column="100" selection-end-line="34" selection-end-column="100" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -127,21 +89,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>F</find>
-      <find>addGly</find>
-      <find>close</find>
-      <find>setProgressBarToCompleted</find>
-      <find>CHECK</find>
-      <find>body</find>
-      <find>HOVER_ANIMATION</find>
-      <find>setDownloadStatus</find>
-      <find>downloadStatus =</find>
-      <find>setDownload</find>
-      <find>setLabeltoDownloading</find>
-      <find>TO:DO</find>
-      <find>title</find>
-      <find>downloadAll</find>
-      <find>CALLED THIS</find>
       <find>CALLED t</find>
       <find>CALLED</find>
       <find>onclicke</find>
@@ -157,6 +104,21 @@
       <find>code</find>
       <find>headingParent</find>
       <find>-fx-font-size</find>
+      <find>border</find>
+      <find>Awesome</find>
+      <find>PENCIL</find>
+      <find>show</find>
+      <find>mainBody.getChildren().</find>
+      <find>mainBody.getChildren().cl</find>
+      <find>downloadAndSaveImage</find>
+      <find>getchildre</find>
+      <find>Threa</find>
+      <find>mouseTran</find>
+      <find>Mouse</find>
+      <find>m</find>
+      <find>setOnMo</find>
+      <find>mousetTran</find>
+      <find>stopDragging</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -173,26 +135,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/app/ui/components/Popup.java" />
-        <option value="$PROJECT_DIR$/src/main/java/app/ui/components/buttons/CircularButton.java" />
-        <option value="$PROJECT_DIR$/src/main/java/app/data/ImageManager.java" />
-        <option value="$PROJECT_DIR$/src/main/java/app/data/DataLoadResult.java" />
-        <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/app/ui/components/BufferingImage.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/fxml/components/wikiCategoryDownloadButton.fxml" />
-        <option value="$PROJECT_DIR$/src/main/java/app/ui/components/CircularButton.java" />
-        <option value="$PROJECT_DIR$/src/main/java/app/data/SQLStatement.java" />
-        <option value="$PROJECT_DIR$/src/main/java/app/wiki/WikiCategories.java" />
-        <option value="$PROJECT_DIR$/src/main/java/app/wiki/DownloadCategories.java" />
-        <option value="$PROJECT_DIR$/src/main/java/app/utils/DownloadCategoriesStatus.java" />
-        <option value="$PROJECT_DIR$/src/main/java/app/utils/DownloadCategories.java" />
-        <option value="$PROJECT_DIR$/src/main/java/app/ui/components/WikiCategoryDownloadButton.java" />
-        <option value="$PROJECT_DIR$/src/main/java/app/data/events/CategoryDownloadEvent.java" />
-        <option value="$PROJECT_DIR$/src/main/java/app/wiki/WikiListValues.java" />
-        <option value="$PROJECT_DIR$/src/main/java/app/wiki/WikiList.java" />
-        <option value="$PROJECT_DIR$/src/main/java/app/data/events/OnCategoryDownloadUpdateEvent.java" />
-        <option value="$PROJECT_DIR$/src/main/java/app/data/DownloadCategoriesStatus.java" />
-        <option value="$PROJECT_DIR$/src/main/java/app/data/tables/ItemTable.java" />
         <option value="$PROJECT_DIR$/src/main/java/app/data/tables/CategoryTable.java" />
         <option value="$PROJECT_DIR$/src/main/java/app/data/tables/MonsterTable.java" />
         <option value="$PROJECT_DIR$/src/main/java/app/data/tables/SkillsTable.java" />
@@ -203,27 +145,47 @@
         <option value="$PROJECT_DIR$/src/main/java/app/data/DownloadCategoriesType.java" />
         <option value="$PROJECT_DIR$/src/main/java/app/data/DownloadCategoriesSave.java" />
         <option value="$PROJECT_DIR$/src/main/java/app/data/DatabaseSQLExecuteResult.java" />
-        <option value="$PROJECT_DIR$/src/main/java/app/data/models/Monster.java" />
-        <option value="$PROJECT_DIR$/src/main/java/app/data/models/Item.java" />
         <option value="$PROJECT_DIR$/src/main/java/app/data/DatabaseSQLErrorType.java" />
         <option value="$PROJECT_DIR$/src/main/java/app/data/wiki/WikiList.java" />
         <option value="$PROJECT_DIR$/src/main/java/app/data/categories/DownloadCategoriesType.java" />
         <option value="$PROJECT_DIR$/src/main/java/app/data/categories/DownloadCategoriesSave.java" />
         <option value="$PROJECT_DIR$/src/main/java/app/data/tables/BlacklistTable.java" />
-        <option value="$PROJECT_DIR$/src/main/java/app/data/wiki/WikiBlacklist.java" />
         <option value="$PROJECT_DIR$/src/main/java/app/ui/pages/DatabaseSettings.java" />
         <option value="$PROJECT_DIR$/src/main/java/app/ui/FXMLElement.java" />
         <option value="$PROJECT_DIR$/src/main/java/app/ui/pages/BasePage.java" />
-        <option value="$PROJECT_DIR$/src/main/java/app/ui/OSRSUtilitiesWindow.java" />
-        <option value="$PROJECT_DIR$/src/main/java/app/ui/pages/TestPage.java" />
-        <option value="$PROJECT_DIR$/src/main/java/app/ui/components/CategoryDownloadButton.java" />
         <option value="$PROJECT_DIR$/src/main/java/app/data/categories/DownloadCategories.java" />
-        <option value="$PROJECT_DIR$/src/main/java/app/ui/components/SideMenu.java" />
         <option value="$PROJECT_DIR$/src/main/java/app/utils/CSSColorParser.java" />
-        <option value="$PROJECT_DIR$/src/main/java/app/OSRSUtilities.java" />
+        <option value="$PROJECT_DIR$/src/main/java/app/ui/components/Textbox.java" />
+        <option value="$PROJECT_DIR$/src/main/java/app/ui/components/SideMenu.java" />
+        <option value="$PROJECT_DIR$/src/main/java/app/ui/components/CategoryDownloadButton.java" />
         <option value="$PROJECT_DIR$/src/main/java/app/ui/components/buttons/SquareButton.java" />
-        <option value="$PROJECT_DIR$/src/main/java/app/ui/components/DialogBox.java" />
         <option value="$PROJECT_DIR$/src/main/java/app/ui/pages/DownloadsPage.java" />
+        <option value="$PROJECT_DIR$/src/main/java/app/ui/components/buttons/CircularButton.java" />
+        <option value="$PROJECT_DIR$/src/main/java/app/ui/components/BlackListView.java" />
+        <option value="$PROJECT_DIR$/src/main/java/app/ui/components/DialogBox.java" />
+        <option value="$PROJECT_DIR$/src/main/java/app/ui/pages/BlacklistPage.java" />
+        <option value="$PROJECT_DIR$/src/main/java/app/data/models/Monster.java" />
+        <option value="$PROJECT_DIR$/src/main/java/app/data/wiki/WikiBlacklist.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/app/data/images/ImageDownloadedCallback.java" />
+        <option value="$PROJECT_DIR$/src/main/java/app/data/images/ImageManager.java" />
+        <option value="$PROJECT_DIR$/src/main/java/app/data/images/OnImageDownloaded.java" />
+        <option value="$PROJECT_DIR$/src/main/java/app/data/ImageManager.java" />
+        <option value="$PROJECT_DIR$/src/main/java/app/ui/pages/TestPage.java" />
+        <option value="$PROJECT_DIR$/src/main/java/app/OSRSUtilities.java" />
+        <option value="$PROJECT_DIR$/src/main/java/app/ui/components/ItemContainerView.java" />
+        <option value="$PROJECT_DIR$/src/main/java/app/ui/components/loadouts/ItemContainerView.java" />
+        <option value="$PROJECT_DIR$/src/main/java/app/ui/components/loadouts/ItemContainer.java" />
+        <option value="$PROJECT_DIR$/src/main/java/app/ui/components/loadouts/EquipmentTab.java" />
+        <option value="$PROJECT_DIR$/src/main/java/app/data/models/Item.java" />
+        <option value="$PROJECT_DIR$/src/main/java/app/ui/components/loadouts/InventoryTab.java" />
+        <option value="$PROJECT_DIR$/src/main/java/app/ui/components/loadouts/ItemSquare.java" />
+        <option value="$PROJECT_DIR$/src/main/java/app/ui/components/WikiImage.java" />
+        <option value="$PROJECT_DIR$/src/main/java/app/ui/components/loadouts/ItemSprite.java" />
+        <option value="$PROJECT_DIR$/src/main/java/app/ui/components/loadouts/ItemDragDropController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/app/ui/components/loadouts/ItemHotspot.java" />
+        <option value="$PROJECT_DIR$/src/main/java/app/ui/pages/LoadoutPage.java" />
+        <option value="$PROJECT_DIR$/src/main/java/app/ui/OSRSUtilitiesWindow.java" />
       </list>
     </option>
   </component>
@@ -235,8 +197,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="103" />
-    <option name="y" value="-18" />
+    <option name="x" value="177" />
+    <option name="y" value="-23" />
     <option name="width" value="1400" />
     <option name="height" value="1000" />
   </component>
@@ -246,7 +208,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -367,6 +329,17 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
               <item name="ui" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="loadouts" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="OSRSUtilites" type="b2602c69:ProjectViewProjectNode" />
+              <item name="OSRSUtilities" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="ui" type="462c0819:PsiDirectoryNode" />
               <item name="pages" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -419,16 +392,6 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
               <item name="fxml" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="dialogBox" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="OSRSUtilites" type="b2602c69:ProjectViewProjectNode" />
-              <item name="OSRSUtilities" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="fxml" type="462c0819:PsiDirectoryNode" />
               <item name="pages" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -440,7 +403,7 @@
         </subPane>
       </pane>
       <pane id="AndroidView" />
-      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -455,11 +418,11 @@
       <recent name="D:\OSRSUtilities\src\main\resources" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="app.ui.components.loadouts" />
+      <recent name="app.ui.pages" />
       <recent name="app.ui.components.buttons" />
       <recent name="app.ui.components" />
       <recent name="app.data.tables" />
-      <recent name="app.data.models" />
-      <recent name="app.ui.pages" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\OSRSUtilities\src\main\resources" />
@@ -562,11 +525,11 @@
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50178254" side_tool="true" weight="0.2081545" />
       <window_info anchor="right" id="Maven Projects" order="7" />
       <window_info anchor="bottom" id="Version Control" order="8" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49821746" visible="true" weight="0.16259299" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49821746" visible="true" weight="0.14665249" />
       <window_info anchor="bottom" id="Terminal" order="9" weight="0.32943678" />
       <window_info id="Capture Tool" order="6" />
       <window_info id="Designer" order="3" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18072917" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18697916" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32943678" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="2" weight="0.25" />
@@ -587,133 +550,15 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="8" />
+      <option name="time" value="10" />
     </breakpoint-manager>
+    <watches-manager>
+      <configuration name="Application">
+        <watch expression="root" language="JAVA" />
+      </configuration>
+    </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$MAVEN_REPOSITORY$/commons-io/commons-io/2.6/commons-io-2.6.jar!/org/apache/commons/io/FileUtils.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="700" column="42" lean-forward="true" selection-start-line="700" selection-start-column="42" selection-end-line="700" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/app/ui/components/BufferingImage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="7" selection-start-line="14" selection-start-column="7" selection-end-line="14" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/fxml/pages/TestPage.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder" />
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/fxml/pages/DatabaseSettings.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="22" column="24" lean-forward="true" selection-start-line="22" selection-start-column="24" selection-end-line="22" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk-10.0.2/lib/src.zip!/java.base/java/util/Objects.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="220" selection-start-line="220" selection-end-line="220" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/com/jfoenix/jfoenix/9.0.5/jfoenix-9.0.5.jar!/com/jfoenix/skins/JFXProgressBarSkin.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="39" column="42" selection-start-line="39" selection-start-column="42" selection-end-line="39" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/fxml/components/wikiCategoryDownloadButton.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="33" column="51" selection-start-line="33" selection-start-column="51" selection-end-line="33" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk-10.0.2/lib/src.zip!/java.base/java/util/Comparator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="149" column="8" selection-start-line="149" selection-start-column="8" selection-end-line="149" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/app/data/events/OnCategoryDownloadUpdateEvent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="563">
-          <caret line="43" column="59" lean-forward="true" selection-start-line="43" selection-start-column="4" selection-end-line="43" selection-end-column="59" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/app/data/tables/ItemTable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="50" selection-start-line="3" selection-start-column="45" selection-end-line="3" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/app/data/tables/MonsterTable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="53" selection-start-line="10" selection-start-column="53" selection-end-line="10" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/app/data/tables/SkillsTable.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/app/data/models/Skill.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/app/data/SQLStatement.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="867">
-          <caret line="54" column="40" lean-forward="true" selection-start-line="54" selection-start-column="40" selection-end-line="54" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/app/data/DataManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="501">
-          <caret line="69" lean-forward="true" selection-start-line="69" selection-end-line="69" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/app/data/DataLoadResult.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="12" selection-start-line="6" selection-start-column="12" selection-end-line="6" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/app/data/DatabaseSQLExecuteResult.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="546">
-          <caret line="83" column="44" lean-forward="true" selection-start-line="83" selection-start-column="44" selection-end-line="83" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/app/data/DatabaseSQLErrorType.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="11" column="43" selection-start-line="11" selection-start-column="43" selection-end-line="11" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/app/data/models/Monster.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="501">
-          <caret line="79" column="38" lean-forward="true" selection-start-line="79" selection-start-column="38" selection-end-line="79" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/app/data/wiki/WikiListValues.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
@@ -728,13 +573,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/app/data/categories/DownloadCategoriesSave.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="34" selection-start-line="12" selection-start-column="34" selection-end-line="12" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/app/data/tables/BlacklistTable.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
@@ -742,38 +580,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/app/data/tables/CategoryTable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="4" selection-start-line="3" selection-start-column="4" selection-end-line="3" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/app/data/categories/DownloadCategoriesType.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="5" column="3" lean-forward="true" selection-start-line="5" selection-start-column="3" selection-end-line="5" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/app/data/models/Item.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="529">
-          <caret line="82" column="13" lean-forward="true" selection-start-line="82" selection-start-column="13" selection-end-line="82" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/app/data/wiki/WikiBlacklist.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="416">
-          <caret line="29" column="55" selection-start-line="29" selection-start-column="55" selection-end-line="29" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/app/data/wiki/WikiAPICall.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-374">
-          <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -788,13 +598,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="356">
           <caret line="234" column="42" lean-forward="true" selection-start-line="234" selection-start-column="42" selection-end-line="234" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk-10.0.2/lib/src.zip!/javafx.graphics/javafx/scene/layout/BorderStroke.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="203" column="179" selection-start-line="203" selection-start-column="24" selection-end-line="203" selection-end-column="179" />
         </state>
       </provider>
     </entry>
@@ -854,82 +657,77 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/app/ui/pages/BasePage.java">
+    <entry file="jar://C:/Program Files/Java/jdk-10.0.2/lib/src.zip!/javafx.graphics/javafx/css/CssParser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="544">
-          <caret line="32" column="34" selection-start-line="32" selection-start-column="34" selection-end-line="32" selection-end-column="34" />
+        <state relative-caret-position="254">
+          <caret line="4566" selection-start-line="4566" selection-end-line="4566" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/app/ui/OSRSUtilitiesWindow.java">
+    <entry file="jar://C:/Program Files/Java/jdk-10.0.2/lib/src.zip!/javafx.graphics/javafx/css/Rule.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="355">
-          <caret line="96" selection-start-line="96" selection-end-line="96" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/app/ui/pages/TestPage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" selection-start-line="20" selection-end-line="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/app/data/categories/DownloadCategories.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="53" selection-start-line="5" selection-start-column="53" selection-end-line="5" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/app/ui/components/CategoryDownloadButton.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1071">
-          <caret line="107" column="77" lean-forward="true" selection-start-line="107" selection-start-column="77" selection-end-line="107" selection-end-column="77" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="254">
+          <caret line="112" column="43" selection-start-line="112" selection-start-column="32" selection-end-line="112" selection-end-column="43" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/app/utils/CSSColorParser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="35" column="97" selection-start-line="35" selection-start-column="97" selection-end-line="35" selection-end-column="97" />
+        <state relative-caret-position="561">
+          <caret line="44" column="17" lean-forward="true" selection-start-line="44" selection-start-column="17" selection-end-line="44" selection-end-column="17" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/app/OSRSUtilities.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/app/ui/components/Textbox.java" />
+    <entry file="jar://C:/Program Files/Java/jdk-10.0.2/lib/src.zip!/javafx.graphics/javafx/scene/layout/BorderStroke.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="468">
-          <caret line="48" column="40" selection-start-line="48" selection-start-column="40" selection-end-line="48" selection-end-column="40" />
+        <state relative-caret-position="220">
+          <caret line="203" column="182" lean-forward="true" selection-start-line="203" selection-start-column="24" selection-end-line="203" selection-end-column="182" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/app/ui/components/CategoryDownloadButton.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="236">
+          <caret line="78" column="33" selection-start-line="78" selection-start-column="33" selection-end-line="78" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/app/data/tables/CategoryTable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="4" selection-start-line="3" selection-start-column="4" selection-end-line="3" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/app/data/categories/DownloadCategories.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="629">
+          <caret line="171" column="9" lean-forward="true" selection-start-line="161" selection-start-column="7" selection-end-line="171" selection-end-column="9" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/app/ui/components/SideMenu.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/app/ui/pages/DownloadsPage.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="213">
-          <caret line="161" column="8" selection-start-line="161" selection-start-column="8" selection-end-line="173" selection-end-column="35" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="366">
+          <caret line="86" column="52" selection-start-line="86" selection-start-column="52" selection-end-line="86" selection-end-column="52" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/app/ui/components/buttons/CircularButton.java">
+    <entry file="jar://$MAVEN_REPOSITORY$/de/jensd/fontawesomefx-fontawesome/4.7.0-9.1.2/fontawesomefx-fontawesome-4.7.0-9.1.2.jar!/de/jensd/fx/glyphs/fontawesome/FontAwesomeIcon.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="612">
-          <caret line="104" column="8" selection-start-line="104" selection-start-column="8" selection-end-line="104" selection-end-column="94" />
+        <state relative-caret-position="8466">
+          <caret line="501" column="10" selection-start-line="501" selection-start-column="4" selection-end-line="501" selection-end-column="10" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/app/ui/components/buttons/SquareButton.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/app/ui/components/BlackListView.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="468">
-          <caret line="119" column="28" lean-forward="true" selection-start-line="119" selection-start-column="28" selection-end-line="119" selection-end-column="28" />
+        <state relative-caret-position="636">
+          <caret line="148" column="30" lean-forward="true" selection-start-line="148" selection-start-column="30" selection-end-line="148" selection-end-column="30" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -938,20 +736,204 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/app/ui/components/DialogBox.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="229" column="32" selection-start-line="229" selection-start-column="32" selection-end-line="229" selection-end-column="32" />
+        <state relative-caret-position="575">
+          <caret line="251" column="23" lean-forward="true" selection-start-line="251" selection-start-column="23" selection-end-line="251" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/app/data/models/Monster.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="585">
+          <caret line="98" column="58" selection-start-line="98" selection-start-column="58" selection-end-line="98" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/app/ui/pages/BlacklistPage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="415">
+          <caret line="115" column="54" lean-forward="true" selection-start-line="115" selection-start-column="54" selection-end-line="115" selection-end-column="54" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2393#2530#0" expanded="true" />
-            <element signature="e#2529#2530#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/app/ui/pages/DownloadsPage.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/app/data/wiki/WikiBlacklist.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="587">
-          <caret line="153" column="83" selection-start-line="153" selection-start-column="83" selection-end-line="153" selection-end-column="83" />
+        <state relative-caret-position="636">
+          <caret line="111" lean-forward="true" selection-start-line="111" selection-end-line="111" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/app/data/wiki/WikiAPICall.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="39" column="7" lean-forward="true" selection-start-line="39" selection-start-column="7" selection-end-line="39" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="629">
+          <caret line="40" column="8" selection-start-line="40" selection-start-column="8" selection-end-line="44" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/app/data/categories/DownloadCategoriesSave.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="1" lean-forward="true" selection-end-line="17" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/app/data/images/OnImageDownloaded.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/app/data/ImageManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="269">
+          <caret line="64" column="25" selection-start-line="64" selection-start-column="25" selection-end-line="64" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/app/OSRSUtilities.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="370">
+          <caret line="50" column="41" selection-start-line="50" selection-start-column="41" selection-end-line="50" selection-end-column="41" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/app/ui/components/loadouts/ItemContainer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="6" selection-start-line="12" selection-start-column="6" selection-end-line="12" selection-end-column="6" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/app/ui/components/loadouts/EquipmentTab.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="381">
+          <caret line="29" column="98" selection-start-line="29" selection-start-column="98" selection-end-line="29" selection-end-column="98" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/app/data/models/Item.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="115" column="55" lean-forward="true" selection-start-line="115" selection-start-column="55" selection-end-line="115" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/app/ui/components/loadouts/InventoryTab.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="544">
+          <caret line="32" column="5" lean-forward="true" selection-start-line="32" selection-start-column="5" selection-end-line="32" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/app/ui/components/buttons/SquareButton.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="302">
+          <caret line="24" column="4" lean-forward="true" selection-start-line="24" selection-start-column="4" selection-end-line="27" selection-end-column="71" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/app/ui/pages/BasePage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="544">
+          <caret line="32" column="34" selection-start-line="32" selection-start-column="34" selection-end-line="32" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/app/ui/components/SideMenu.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="349">
+          <caret line="78" column="33" selection-start-line="78" selection-start-column="33" selection-end-line="78" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk-10.0.2/lib/src.zip!/javafx.graphics/javafx/scene/layout/AnchorPane.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="305">
+          <caret line="115" column="36" selection-start-line="115" selection-start-column="32" selection-end-line="115" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/app/ui/components/buttons/CircularButton.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="125" column="42" lean-forward="true" selection-start-line="125" selection-start-column="42" selection-end-line="125" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/app/ui/components/WikiImage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="619">
+          <caret line="87" column="42" selection-start-line="87" selection-start-column="42" selection-end-line="87" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/app/ui/components/loadouts/ItemSprite.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/app/ui/components/loadouts/ItemDragDropController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="364">
+          <caret line="132" column="13" lean-forward="true" selection-start-line="132" selection-start-column="13" selection-end-line="132" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/app/ui/pages/TestPage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="24" column="42" lean-forward="true" selection-start-line="24" selection-start-column="42" selection-end-line="24" selection-end-column="42" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/app/ui/components/loadouts/ItemHotspot.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="364">
+          <caret line="34" column="100" selection-start-line="34" selection-start-column="100" selection-end-line="34" selection-end-column="100" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/app/ui/OSRSUtilitiesWindow.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="32" column="48" selection-start-line="32" selection-start-column="48" selection-end-line="32" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/app/ui/pages/LoadoutPage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="36" column="42" lean-forward="true" selection-start-line="36" selection-start-column="42" selection-end-line="36" selection-end-column="42" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

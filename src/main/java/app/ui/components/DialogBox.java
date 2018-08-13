@@ -77,7 +77,7 @@ public class DialogBox extends FXMLElement {
      * Creates a dialogbox.
      */
     private DialogBox() {
-        super("/fxml/components/dialogBox/dialogbox.fxml");
+        super("/fxml/components/Dialogbox.fxml");
 
         AnchorPane.setBottomAnchor(this, 0d);
         AnchorPane.setLeftAnchor(this, 0d);
@@ -247,10 +247,10 @@ public class DialogBox extends FXMLElement {
     }
 
     /**
-     * @return The width of the main body.
+     * Clears the body of the dialog box.
      */
-    public static double getMainBodyWidth() {
-        return dialogBox.mainBody.getPrefWidth();
+    public static void clearBody() {
+        dialogBox.mainBody.getChildren().clear();
     }
 
     /**

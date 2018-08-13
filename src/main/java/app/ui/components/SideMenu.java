@@ -3,6 +3,7 @@ package app.ui.components;
 import app.OSRSUtilities;
 import app.ui.FXMLElement;
 import app.ui.components.buttons.SquareButton;
+import app.ui.pages.BlacklistPage;
 import app.ui.pages.DownloadsPage;
 import app.ui.pages.TestPage;
 import app.utils.CSSColorParser;
@@ -75,7 +76,7 @@ public class SideMenu extends FXMLElement {
      * Constructor.
      */
     public SideMenu() {
-        super("/fxml/components/sideMenu.fxml");
+        super("/fxml/components/SideMenu.fxml");
         getParentElement().setPrefWidth(MENU_WIDTH);
         getParentElement().setMinWidth(MENU_WIDTH);
         getParentElement().setMaxWidth(MENU_WIDTH);
@@ -109,8 +110,7 @@ public class SideMenu extends FXMLElement {
 
         // Lower Menu
         addButton(lowerMenu, "Downloads", FontAwesomeIcon.DOWNLOAD, () -> OSRSUtilities.getWindow().showPage(new DownloadsPage()));
-        addButton(lowerMenu, "Blacklist", FontAwesomeIcon.LIST, () -> System.out.println("Blacklist clicked"));
-        addButton(lowerMenu, "Item Editor", FontAwesomeIcon.EDIT, () -> System.out.println("Item Editor clicked"));
+        addButton(lowerMenu, "Blacklist", FontAwesomeIcon.LIST, () -> OSRSUtilities.getWindow().showPage(new BlacklistPage()));
         addSpacer(lowerMenu, 5);
 
         updateTimer = new AnimationTimer() {

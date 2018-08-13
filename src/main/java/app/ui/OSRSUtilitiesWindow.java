@@ -8,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.io.IOException;
 
@@ -24,12 +25,12 @@ public class OSRSUtilitiesWindow {
     /**
      * The minimum width of the window.
      */
-    private final static int MINIMUM_WIDTH = 800;
+    private final static int MINIMUM_WIDTH = 850;
 
     /**
      * The minimum height of the window.
      */
-    private final static int MINIMUM_HEIGHT = 500;
+    private final static int MINIMUM_HEIGHT = 550;
 
     /**
      * The main layout container.
@@ -93,6 +94,10 @@ public class OSRSUtilitiesWindow {
      */
     public void showPage(BasePage page) {
         if (currentPage != null) {
+            if (page.getClass() == currentPage.getClass()) {
+                return;
+            }
+
             currentPage.onRemoved();
             mainLayout.getChildren().remove(currentPage);
         }
@@ -100,16 +105,19 @@ public class OSRSUtilitiesWindow {
         this.currentPage = page;
         mainLayout.getChildren().add(currentPage);
         AnchorPane.setBottomAnchor(currentPage, 0d);
-        AnchorPane.setLeftAnchor(currentPage, 0d);
         AnchorPane.setRightAnchor(currentPage, 0d);
         AnchorPane.setTopAnchor(currentPage, 0d);
+        AnchorPane.setLeftAnchor(currentPage, 0d);
 
         if (page.shouldShowSideBarMenu()) {
             if (!mainLayout.getChildren().contains(sideMenu)) {
                 mainLayout.getChildren().add(sideMenu);
                 sideMenu.position();
                 AnchorPane.setLeftAnchor(currentPage, SideMenu.AMOUNT_SHOWN_WHEN_COLLAPSED);
-
+            }
+        } else {
+            if (mainLayout.getChildren().contains(sideMenu)) {
+                mainLayout.getChildren().remove(sideMenu);
             }
         }
 

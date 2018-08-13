@@ -1,6 +1,7 @@
 package app.data;
 
 import app.OSRSUtilities;
+import app.data.DataManager;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.scene.image.Image;
 import org.jsoup.Jsoup;
@@ -63,9 +64,10 @@ public class ImageManager {
      * Downloads the image from the url and saves it.
      * @param imageUrl The url of the image to download.
      * @param imageName What the image will be saved as.
+     * @param onDownloaded Method to called when download is completed.
      * @return True if it was successful.
      */
-    public static boolean downloadAndSaveImage(String imageUrl, String imageName) {
+    public static boolean downloadAndSaveImage(String imageUrl, String imageName, Runnable onDownloaded) {
         Image image = new Image(imageUrl);
         if (image.isError())
             return false;
@@ -79,6 +81,8 @@ public class ImageManager {
             return false;
         }
 
+        if (onDownloaded != null)
+            onDownloaded.run();
         return true;
     }
 

@@ -16,7 +16,6 @@ import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
 
 import java.util.Objects;
-import java.util.concurrent.RecursiveTask;
 
 /**
  * The square button
@@ -82,7 +81,7 @@ public class SquareButton extends FXMLElement {
      * Constructor
      */
     public SquareButton() {
-        super("/fxml/components/buttons/squareButton.fxml");
+        super("/fxml/components/buttons/SquareButton.fxml");
 
         rectangle = (Rectangle) lookup("#rectangle");
         Objects.requireNonNull(rectangle);

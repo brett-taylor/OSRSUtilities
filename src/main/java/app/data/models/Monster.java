@@ -83,4 +83,20 @@ public class Monster {
             }
         }
     }
+
+    /**
+     * Deletes all monsters that have the matching url.
+     * @param url The url to match.
+     */
+    public static void deleteByMatchingWikiURL(String url) {
+        SQLStatement sqlStatement = new SQLStatement("DELETE FROM tableName WHERE urlColumn LIKE urlGiven");
+        sqlStatement.bindParam("tableName", MonsterTable.TABLE_NAME);
+        sqlStatement.bindParam("urlColumn", MonsterTable.WIKI_URL_COLUMN);
+        sqlStatement.bindStringParam("urlGiven", "%" + url + "%");
+
+        DatabaseSQLExecuteResult execute = DataManager.execute(sqlStatement);
+        if (!execute.isSuccessful()) {
+            DialogBox.showError("Failed to delete Monsters with following url: " + url + ". \n" + execute.getErrorMessage());
+        }
+    }
 }

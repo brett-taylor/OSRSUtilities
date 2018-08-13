@@ -3,6 +3,7 @@ package app.utils;
 import app.ui.OSRSUtilitiesWindow;
 import app.ui.components.DialogBox;
 import javafx.css.CssParser;
+import javafx.css.Declaration;
 import javafx.css.Rule;
 import javafx.css.Stylesheet;
 import javafx.css.converter.ColorConverter;
@@ -18,23 +19,33 @@ import java.net.URISyntaxException;
  */
 public class CSSColorParser {
     /**
+     * The root string of the css.
+     */
+    private static Rule root;
+
+    /**
      * Parses a colour found in css into a javafx object
      * @param name The name of the colour in css
      * @return The colour if successful if not it will return white.
      */
     public static Color parseColor(String name) {
-        CssParser parser = new CssParser();
-        try {
-            Stylesheet css = parser.parse(CSSColorParser.class.getResource(OSRSUtilitiesWindow.CSS_LOCATION).toURI().toURL());
-            final Rule rootRule = css.getRules().get(0); // .root
-            return rootRule.getDeclarations().stream()
-                    .filter(d -> d.getProperty().equals(name))
-                    .findFirst()
-                    .map(d -> ColorConverter.getInstance().convert(d.getParsedValue(), null))
-                    .get();
-        } catch (URISyntaxException | IOException error) {
-            DialogBox.showError("Failed parsing css color: " + name + "\n" + error.getMessage());
+        if (root == null) {
+            try {
+                Stylesheet css = new CssParser().parse(CSSColorParser.class.getResource(OSRSUtilitiesWindow.CSS_LOCATION).toURI().toURL());
+                root = css.getRules().get(0);
+            } catch (IOException | URISyntaxException  e) {
+                DialogBox.showError("CSS Parse Failed: \n" + e.getMessage());
+            }
         }
+
+        if (root != null) {
+            for (Declaration d : root.getDeclarations()) {
+                if (d.getProperty().equals(name)) {
+                    return ColorConverter.getInstance().convert(d.getParsedValue(), null);
+                }
+            }
+        }
+
         return Color.WHITE;
     }
 }

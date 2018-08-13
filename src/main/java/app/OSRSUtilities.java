@@ -4,7 +4,9 @@ import app.data.DataLoadResult;
 import app.data.DataManager;
 import app.ui.OSRSUtilitiesWindow;
 import app.ui.components.DialogBox;
+import app.ui.pages.BlacklistPage;
 import app.ui.pages.DownloadsPage;
+import app.ui.pages.LoadoutPage;
 import app.ui.pages.TestPage;
 import javafx.application.Application;
 import javafx.application.Platform;
@@ -46,7 +48,7 @@ public class OSRSUtilities extends Application {
             DialogBox.showError(message.toString(), true);
         }
 
-        window.showPage(new TestPage());
+        window.showPage(new LoadoutPage());
     }
 
     /**

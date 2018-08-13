@@ -21,7 +21,7 @@
     -alert-color: #ff981f;
     -alert-secondary-color: #c9781a;
     -alert-overlay-color: #915208;
- }
+}
 
 .main-background-panel {
     -fx-background-color: -background-dark-color;
@@ -61,4 +61,32 @@
     -fx-background-color: -background-dark-color;
     -fx-border-radius: 10 10 10 10;
     -fx-background-radius: 10 10 10 10;
+}
+
+.nice-textfield {
+    -fx-background-color: -background-dark-color;
+    -fx-border-color: black;
+    -fx-border-width: 1 1 1 1;
+    -fx-border-radius: 4 4 4 4;
+    -fx-background-radius: 4 4 4 8;
+    -fx-text-fill: -text-muted-color;
+}
+
+.nice-textfield:hover, .nice-textfield:focus {
+    -fx-background-color: -background-light-color;
+    -fx-text-fill: white;
+}
+
+.searchbox {
+    -fx-background-color: -background-color;
+    -fx-border-color: black;
+    -fx-border-width: 1 0 1 1;
+    -fx-border-radius: 8 0 0 8;
+    -fx-background-radius: 8 0 0 8;
+    -fx-text-fill: -text-muted-color;
+}
+
+.searchbox:hover, .searchbox:focus {
+    -fx-background-color: -background-dark-color;
+    -fx-text-fill: white;
 }

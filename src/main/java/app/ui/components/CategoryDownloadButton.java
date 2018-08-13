@@ -76,7 +76,7 @@ public class CategoryDownloadButton extends FXMLElement implements OnCategoryDow
      * @param category The category it is representing.
      */
     public CategoryDownloadButton(DownloadCategories category) {
-        super("/fxml/components/wikiCategoryDownloadButton.fxml");
+        super("/fxml/components/WikiCategoryDownloadButton.fxml");
         this.category = category;
 
         mainBackground = (Rectangle) lookup("#mainBackground");

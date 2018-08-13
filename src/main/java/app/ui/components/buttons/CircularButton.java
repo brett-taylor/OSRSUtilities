@@ -8,6 +8,7 @@ import javafx.animation.FillTransition;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
 import javafx.util.Duration;
 
@@ -57,7 +58,7 @@ public class CircularButton extends FXMLElement {
      * Constructor
      */
     public CircularButton() {
-        super("/fxml/components/buttons/circularButton.fxml");
+        super("/fxml/components/buttons/CircularButton.fxml");
 
         circle = (Circle) lookup("#circle");
         Objects.requireNonNull(circle);
@@ -109,10 +110,14 @@ public class CircularButton extends FXMLElement {
     /**
      * Adds a glyph on top of the circle.
      * @param icon The glyph
-     * @param color The color of the glyph.
+     * @param color The color of the glyph. If this is null it will attempt to set it to the current glyph's color.
+     *              If there was no previous glyph it will set it to white.
      */
     public void setGlyph(FontAwesomeIcon icon, Color color) {
+        Paint currentColor = Color.WHITE;
+
         if (fontAwesomeIconView != null) {
+            currentColor = fontAwesomeIconView.getFill();
             circleOverlay.getChildren().remove(fontAwesomeIconView);
             fontAwesomeIconView = null;
         }
@@ -120,7 +125,11 @@ public class CircularButton extends FXMLElement {
         fontAwesomeIconView = new FontAwesomeIconView(icon);
         fontAwesomeIconView.setSize("40");
         fontAwesomeIconView.setMouseTransparent(true);
-        fontAwesomeIconView.setFill(color);
+        if (color != null) {
+            fontAwesomeIconView.setFill(color);
+        } else {
+            fontAwesomeIconView.setFill(currentColor);
+        }
         circleOverlay.getChildren().add(fontAwesomeIconView);
     }
 
