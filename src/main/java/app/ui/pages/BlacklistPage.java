@@ -2,7 +2,7 @@ package app.ui.pages;
 
 import app.data.wiki.WikiBlacklist;
 import app.ui.components.BlackListView;
-import app.ui.components.DialogBox;
+import app.ui.components.popups.DialogBox;
 import app.ui.components.buttons.CircularButton;
 import app.ui.components.buttons.SquareButton;
 import app.utils.CSSColorParser;
@@ -27,12 +27,12 @@ import java.util.Objects;
  */
 public class BlacklistPage extends BasePage {
     /**
-     * The search result area.
+     * The searchItem result area.
      */
     private VBox resultArea;
 
     /**
-     * The thread that the search will work on.
+     * The thread that the searchItem will work on.
      */
     private Thread searchThread;
 
@@ -47,7 +47,7 @@ public class BlacklistPage extends BasePage {
         addNewURL.setBackgroundHoverColor(CSSColorParser.parseColor("-background-color"));
         addNewURL.setGlyph(FontAwesomeIcon.PLUS, Color.WHITE);
         addNewURL.setSize(25d);
-        addNewURL.setGlyphSize("27");
+        addNewURL.setGlyphSize(27);
         addNewURL.setOnClicked(this::addNewUrlClicked);
 
         TextField searchBar = new TextField();
@@ -129,7 +129,7 @@ public class BlacklistPage extends BasePage {
     }
 
     /**
-     * Called when the search button is clicked.
+     * Called when the searchItem button is clicked.
      * @param phrase The phrase that should be in the url.
      */
     private void searchAndShow(String phrase) {

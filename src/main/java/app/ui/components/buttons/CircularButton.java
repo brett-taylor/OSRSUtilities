@@ -203,8 +203,8 @@ public class CircularButton extends FXMLElement {
      * Sets the size of the glyph..
      * @param glyphSize the size of the glyph.
      */
-    public void setGlyphSize(String glyphSize) {
+    public void setGlyphSize(Integer glyphSize) {
         if (fontAwesomeIconView != null)
-            fontAwesomeIconView.setSize(glyphSize);
+            fontAwesomeIconView.setSize("" + glyphSize);
     }
 }

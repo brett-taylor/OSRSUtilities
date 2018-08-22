@@ -1,11 +1,9 @@
 package app.ui.components;
 
-import app.OSRSUtilities;
 import app.data.wiki.WikiBlacklist;
 import app.ui.FXMLElement;
 import app.ui.components.buttons.CircularButton;
-import app.ui.pages.BasePage;
-import app.ui.pages.BlacklistPage;
+import app.ui.components.popups.DialogBox;
 import app.utils.CSSColorParser;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import javafx.animation.*;

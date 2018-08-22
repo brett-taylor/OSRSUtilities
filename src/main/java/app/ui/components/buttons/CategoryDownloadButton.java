@@ -1,9 +1,9 @@
-package app.ui.components;
+package app.ui.components.buttons;
 
 import app.data.DataManager;
-import app.data.events.OnCategoryDownloadUpdateEvent;
+import app.data.OnCategoryDownloadUpdateEvent;
 import app.ui.FXMLElement;
-import app.ui.components.buttons.CircularButton;
+import app.ui.components.popups.DialogBox;
 import app.utils.CSSColorParser;
 import app.data.categories.DownloadCategories;
 import app.data.categories.DownloadCategoriesStatus;

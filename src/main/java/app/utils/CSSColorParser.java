@@ -1,7 +1,7 @@
 package app.utils;
 
 import app.ui.OSRSUtilitiesWindow;
-import app.ui.components.DialogBox;
+import app.ui.components.popups.DialogBox;
 import javafx.css.CssParser;
 import javafx.css.Declaration;
 import javafx.css.Rule;

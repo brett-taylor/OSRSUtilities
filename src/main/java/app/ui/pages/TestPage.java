@@ -1,6 +1,7 @@
 package app.ui.pages;
 
-import app.ui.components.WikiImage;
+import app.ui.components.popups.searchItem.SelectItemPopup;
+import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 
 /**
@@ -17,12 +18,16 @@ public class TestPage extends BasePage {
 
     @Override
     public void onLoaded() {
-        WikiImage wi = new WikiImage("Red partyhat", "/wiki/Red_partyhat");
-        wi.setPrefWidth(50d);
-        wi.setPrefHeight(50d);
-        ((AnchorPane) getParentElement()).getChildren().addAll(wi);
-        AnchorPane.setLeftAnchor(wi, 100d);
-        AnchorPane.setTopAnchor(wi, 100d);
+        Button button = new Button();
+        button.setText("Click");
+        ((AnchorPane) getParentElement()).getChildren().addAll(button);
+        AnchorPane.setLeftAnchor(button, 300d);
+        AnchorPane.setTopAnchor(button , 300d);
+        button.setOnMouseClicked((e) -> {
+            SelectItemPopup popup = SelectItemPopup.show();
+            popup.setOnSelectItemCancelled(() -> System.out.println("Cancelled searchItem"));
+            popup.setOnSelectItemConfirmed((item) -> System.out.println("Item chosne: " + item.getName()));
+        });
     }
 
     @Override

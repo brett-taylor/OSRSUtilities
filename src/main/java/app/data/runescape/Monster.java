@@ -1,11 +1,11 @@
-package app.data.models;
+package app.data.runescape;
 
 import app.data.DataManager;
 import app.data.DatabaseSQLErrorType;
 import app.data.DatabaseSQLExecuteResult;
 import app.data.SQLStatement;
 import app.data.tables.MonsterTable;
-import app.ui.components.DialogBox;
+import app.ui.components.popups.DialogBox;
 
 /**
  * Represents an Monster from runescape.

@@ -30,7 +30,7 @@ public class OSRSUtilitiesWindow {
     /**
      * The minimum height of the window.
      */
-    private final static int MINIMUM_HEIGHT = 550;
+    private final static int MINIMUM_HEIGHT = 650;
 
     /**
      * The main layout container.
@@ -150,5 +150,13 @@ public class OSRSUtilitiesWindow {
      */
     public BasePage getCurrentPage() {
         return currentPage;
+    }
+
+    /**
+     * Sets the sidebar enabled status.
+     * @param isEnabled True if the sidebar should be enabled.
+     */
+    public void setSideBarEnabledStatus(boolean isEnabled) {
+        sideMenu.setMouseTransparent(!isEnabled);
     }
 }

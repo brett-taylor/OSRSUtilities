@@ -1,7 +1,7 @@
 package app.data.categories;
 
-import app.data.models.Item;
-import app.data.models.Monster;
+import app.data.runescape.Item;
+import app.data.runescape.Monster;
 
 /**
  * Stores what type of category it is.

@@ -1,5 +1,7 @@
-package app.ui.components.loadouts;
+package app.ui.components.items;
 
+import app.data.loadouts.events.OnItemHotspotItemChanged;
+import app.ui.components.popups.searchItem.SelectItemPopup;
 import app.utils.CSSColorParser;
 import javafx.animation.FillTransition;
 import javafx.scene.Cursor;
@@ -55,6 +57,16 @@ public class ItemHotspot extends AnchorPane {
     private ItemSprite attachedItem;
 
     /**
+     * Listener to the OnItemHotspotItemChanged event.
+     */
+    private OnItemHotspotItemChanged onItemHotspotItemChanged;
+
+    /**
+     * Sets whether or not this hotspot will allow items to be dragged from and to it.
+     */
+    private boolean itemDraggingEnabled = true;
+
+    /**
      * Constructor.
      */
     public ItemHotspot() {
@@ -82,6 +94,7 @@ public class ItemHotspot extends AnchorPane {
         setOnDragDetected(this::onDragStarted);
         setOnMouseDragEntered(this::onDragEntered);
         setOnMouseDragExited(this::onDragExited);
+        setOnMouseClicked(this::onMouseClicked);
     }
 
     /**
@@ -97,6 +110,9 @@ public class ItemHotspot extends AnchorPane {
         AnchorPane.setRightAnchor(item, 0d);
         AnchorPane.setBottomAnchor(item, 0d);
         item.toFront();
+
+        if (onItemHotspotItemChanged != null)
+            onItemHotspotItemChanged.onItemHotspotItemChanged(this, attachedItem.getItem());
     }
 
     /**
@@ -104,6 +120,9 @@ public class ItemHotspot extends AnchorPane {
      */
     public void unattachItem() {
         if (attachedItem != null) {
+            if (onItemHotspotItemChanged != null)
+                onItemHotspotItemChanged.onItemHotspotItemChanged(this, null);
+
             getChildren().remove(attachedItem);
             attachedItem = null;
         }
@@ -149,6 +168,9 @@ public class ItemHotspot extends AnchorPane {
         if (attachedItem == null)
             return;
 
+        if (!itemDraggingEnabled)
+            return;
+
         this.startFullDrag();
         setCursor(Cursor.HAND);
         ItemDragDropController.get().startDragging(attachedItem, this);
@@ -161,6 +183,9 @@ public class ItemHotspot extends AnchorPane {
      * @param e The mouse event
      */
     private void onDragEntered(MouseEvent e) {
+        if (!itemDraggingEnabled)
+            return;
+
         if (ItemDragDropController.get() != null) {
             ItemDragDropController.get().setHoveredItemHotspot(this);
         }
@@ -182,5 +207,30 @@ public class ItemHotspot extends AnchorPane {
         FillTransition ft = new FillTransition(HOVER_ANIMATION_TIME, background, BACKGROUND_HOVER_COLOR, BACKGROUND_COLOR);
         ft.setCycleCount(1);
         ft.play();
+    }
+
+    /**
+     * Called when the hotspot is clicked.
+     * @param e The mouse event
+     */
+    private void onMouseClicked(MouseEvent e) {
+        SelectItemPopup popup = SelectItemPopup.show();
+        popup.setOnSelectItemConfirmed((item) -> attachItem(new ItemSprite(item)));
+    }
+
+    /**
+     * Sets a new listener to the OnItemHotspotItemChanged event.
+     * @param onItemHotspotItemChanged The listener.
+     */
+    public void setOnItemHotspotItemChanged(OnItemHotspotItemChanged onItemHotspotItemChanged) {
+        this.onItemHotspotItemChanged = onItemHotspotItemChanged;
+    }
+
+    /**
+     * Sets whether or not this hotspot will allow items to be dragged from and to it.
+     * @param itemDragging True if you wish for this behaviour to happen.
+     */
+    public void setItemDragging(boolean itemDragging) {
+        itemDraggingEnabled = itemDragging;
     }
 }

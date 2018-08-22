@@ -13,6 +13,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Font;
 import javafx.util.Duration;
 
 import java.util.Objects;
@@ -305,5 +306,20 @@ public class SquareButton extends FXMLElement {
      */
     public void setTextPadding(int top, int right, int bottom, int left) {
         buttonLabel.setPadding(new Insets(top, right, bottom, left));
+    }
+
+    /**
+     * Sets the font of the button.
+     * @param font The font
+     */
+    public void setFont(Font font) {
+        buttonLabel.setFont(font);
+    }
+
+    /**
+     * @return The content of the button's label.
+     */
+    public String getText() {
+        return buttonLabel.getText();
     }
 }

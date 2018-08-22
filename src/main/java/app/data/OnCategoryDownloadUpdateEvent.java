@@ -1,4 +1,4 @@
-package app.data.events;
+package app.data;
 
 import app.data.categories.DownloadCategories;
 import app.data.categories.DownloadCategoriesStatus;

@@ -4,10 +4,10 @@ import app.data.DataManager;
 import app.data.DatabaseSQLErrorType;
 import app.data.DatabaseSQLExecuteResult;
 import app.data.SQLStatement;
-import app.data.models.Item;
-import app.data.models.Monster;
+import app.data.runescape.Item;
+import app.data.runescape.Monster;
 import app.data.tables.BlacklistTable;
-import app.ui.components.DialogBox;
+import app.ui.components.popups.DialogBox;
 
 import java.sql.SQLException;
 import java.util.ArrayList;

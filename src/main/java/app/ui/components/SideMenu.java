@@ -6,6 +6,7 @@ import app.ui.components.buttons.SquareButton;
 import app.ui.pages.BlacklistPage;
 import app.ui.pages.DownloadsPage;
 import app.ui.pages.TestPage;
+import app.ui.pages.ViewLoadoutsPage;
 import app.utils.CSSColorParser;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
@@ -105,7 +106,7 @@ public class SideMenu extends FXMLElement {
         AnchorPane.setRightAnchor(menuIcon, 7d);
 
         // Upper Menu
-        addButton(upperMenu, "Loadouts", FontAwesomeIcon.SUITCASE, () -> System.out.println("Loadout clicked"));
+        addButton(upperMenu, "Loadouts", FontAwesomeIcon.SUITCASE, () -> OSRSUtilities.getWindow().showPage(new ViewLoadoutsPage()));
         addButton(upperMenu, "Test Page", FontAwesomeIcon.COG, () -> OSRSUtilities.getWindow().showPage(new TestPage()));
 
         // Lower Menu

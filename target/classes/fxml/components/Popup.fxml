@@ -19,7 +19,7 @@
                <children>
                   <AnchorPane id="headingBody" maxHeight="60.0" maxWidth="1.7976931348623157E308" minHeight="60.0" prefHeight="60.0" prefWidth="200.0" style="-fx-background-color: -accent-color;">
                      <children>
-                        <Label id="headingLabel" style="-fx-text-fill: white;" text="Dialog Box Title" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="15.0">
+                        <Label id="headingLabel" style="-fx-text-fill: white;" text="Popup Box Title" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="15.0">
                            <font>
                               <Font name="Open Sans Light" size="18.0" />
                            </font>

@@ -42,7 +42,7 @@ public class DataManager {
     private static Statement theStatement = null;
 
     /**
-     * Constructor of the data manager.
+     * Handles setting up the data manager.
      */
     public static DataLoadResult start() {
         if (!doesDirectoryExist()) {

@@ -1,14 +1,15 @@
-package app.data.models;
+package app.data.runescape;
 
 import app.data.DataManager;
 import app.data.DatabaseSQLErrorType;
 import app.data.DatabaseSQLExecuteResult;
 import app.data.SQLStatement;
 import app.data.tables.ItemTable;
-import app.data.tables.MonsterTable;
-import app.ui.components.DialogBox;
+import app.ui.components.popups.DialogBox;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Represents an item from runescape.
@@ -135,5 +136,43 @@ public class Item {
         }
 
         return null;
+    }
+
+    /**
+     * Gets all of the items that name matches the given pattern.
+     * @param phrase The pattern
+     * @return The list of items.
+     */
+    public static List<Item> loadAllItemsThatContainInName(String phrase) {
+        SQLStatement sqlStatement = new SQLStatement("SELECT itemColumnName FROM tableName WHERE itemColumnName LIKE itemNamePhrase");
+        sqlStatement.bindParam("tableName", ItemTable.TABLE_NAME);
+        sqlStatement.bindParam("itemColumnName", ItemTable.NAME_COLUMN_PK);
+        sqlStatement.bindStringParam("itemNamePhrase", "%" + phrase + "%");
+
+        DatabaseSQLExecuteResult execute = DataManager.execute(sqlStatement);
+        if (!execute.isSuccessful()) {
+            DialogBox.showError("Failed to find items with following pattern in name. Pattern: " + phrase + ". \n" + execute.getErrorMessage());
+            return null;
+        }
+
+        List<String> itemNames = new ArrayList<>();
+        try {
+            while (execute.getResultSet().next()) {
+                itemNames.add(execute.getResultSet().getString(ItemTable.NAME_COLUMN_PK));
+            }
+        } catch (SQLException e) {
+            DialogBox.showError("Failed to find items with following pattern in name. Pattern: " + phrase + ". \n" + execute.getErrorMessage());
+            return null;
+        }
+
+        ArrayList<Item> items = new ArrayList<>();
+        for (String itemName : itemNames) {
+            Item item = load(itemName);
+            if (item != null) {
+                items.add(item);
+            }
+        }
+
+        return items;
     }
 }

@@ -90,3 +90,11 @@
     -fx-background-color: -background-dark-color;
     -fx-text-fill: white;
 }
+
+#dark-searchbox { 
+    -fx-background-color: -background-dark-color;
+}
+
+#dark-searchbox:hover, #dark-searchbox:focus { 
+    -fx-background-color: -background-light-color;
+}

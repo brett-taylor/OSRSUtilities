@@ -1,112 +1,32 @@
-package app.ui.components;
+package app.ui.components.popups;
 
 import app.OSRSUtilities;
-import app.ui.FXMLElement;
 import app.ui.components.buttons.CircularButton;
 import com.jfoenix.controls.JFXSpinner;
-import javafx.animation.AnimationTimer;
-import javafx.animation.KeyFrame;
-import javafx.animation.KeyValue;
-import javafx.animation.Timeline;
 import javafx.application.Platform;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
-import javafx.util.Duration;
-
-import java.util.Objects;
-
 
 /**
  * The dialog box that can appear on screen.
  * @author Brett Taylor
  */
-public class DialogBox extends FXMLElement {
+public class DialogBox extends PopupMenu {
     /**
      * Stores the dialog box that is currently showing on screen. Only one dialog box at a time can show.
      */
     private static DialogBox dialogBox = null;
 
     /**
-     * The duration the hello and bye animations will last.
-     */
-    private static Duration HELLO_BYE_ANIMATION_TIME = Duration.millis(200);
-
-    /**
-     * The y position of where the dialog box will sit.
-     */
-    private static double FINAL_POSITION_Y = 25;
-
-    /**
-     * The main background of the dialog box.
-     */
-    private HBox mainBackground;
-
-    /**
-     * The heading of the dialog box.
-     */
-    private Label heading;
-
-    /**
-     * The button row container.
-     */
-    private HBox buttonRow;
-
-    /**
-     * The header body.
-     */
-    private AnchorPane headingBody;
-
-    /**
-     * The main body.
-     */
-    private AnchorPane mainBody;
-
-    /**
-     * Update timer.
-     */
-    private AnimationTimer updateTimer;
-
-    /**
      * Creates a dialogbox.
      */
     private DialogBox() {
-        super("/fxml/components/Dialogbox.fxml");
-
-        AnchorPane.setBottomAnchor(this, 0d);
-        AnchorPane.setLeftAnchor(this, 0d);
-        AnchorPane.setRightAnchor(this, 0d);
-        AnchorPane.setTopAnchor(this, 0d);
-
-        mainBackground = (HBox) lookup("#mainBackground");
-        Objects.requireNonNull(mainBackground);
-
-        headingBody = (AnchorPane) lookup("#headingBody");
-        Objects.requireNonNull(headingBody);
-
-        heading = (Label) lookup("#headingLabel");
-        Objects.requireNonNull(heading);
-
-        buttonRow = (HBox) lookup("#buttonRow");
-        Objects.requireNonNull(buttonRow);
-
-        mainBody = (AnchorPane) lookup("#mainBody");
-        Objects.requireNonNull(mainBody);
-
-        setVisible(false);
-        updateTimer = new AnimationTimer() {
-            @Override
-            public void handle(long now) {
-                update();
-            }
-        };
-        updateTimer.start();
     }
 
     /**
@@ -119,8 +39,9 @@ public class DialogBox extends FXMLElement {
         }
 
         dialogBox = new DialogBox();
-        OSRSUtilities.getWindow().getMainLayout().getChildren().add(dialogBox);
-        dialogBox.setHeading(title);
+        Platform.runLater(() -> {
+            dialogBox.setHeading(title);
+        });
 
         Platform.runLater(() -> dialogBox.startHelloAnimation());
     }
@@ -253,59 +174,13 @@ public class DialogBox extends FXMLElement {
         dialogBox.mainBody.getChildren().clear();
     }
 
-    /**
-     * Called often to update the dialog box.
-     */
-    private void update() {
-        toFront();
-    }
-
-    /**
-     * Starts the hello animation.
-     */
-    private void startHelloAnimation() {
-        setVisible(true);
-        mainBackground.setLayoutY(OSRSUtilities.getWindow().getPrimaryStage().getHeight() + 5);
-
-        Timeline timeline = new Timeline();
-        timeline.setCycleCount(1);
-        timeline.getKeyFrames().add(
-                new KeyFrame(HELLO_BYE_ANIMATION_TIME, new KeyValue(mainBackground.layoutYProperty(), FINAL_POSITION_Y)
-        ));
-        timeline.play();
-        timeline.setOnFinished(e ->  {
-            timeline.stop();
-            this.endHelloAnimation();
-        });
-    }
-
-    /**
-     * Called when the hello animation ends.
-     */
-    private void endHelloAnimation() {
-    }
-
-    /**
-     * Starts the bye animation.
-     */
-    private void startByeAnimation() {
-        Timeline timeline = new Timeline();
-        timeline.setCycleCount(1);
-        timeline.getKeyFrames().add(
-                new KeyFrame(HELLO_BYE_ANIMATION_TIME, new KeyValue(mainBackground.layoutYProperty(), OSRSUtilities.getWindow().getPrimaryStage().getHeight() + 5)
-                ));
-        timeline.play();
-        timeline.setOnFinished(e ->  {
-            timeline.stop();
-            this.endByeAnimation();
-        });
-    }
 
     /**
      * Called when the bye animation ends.
      */
-    private void endByeAnimation() {
-        OSRSUtilities.getWindow().getMainLayout().getChildren().remove(dialogBox);
+    @Override
+    protected void endByeAnimation() {
+        super.endByeAnimation();
         dialogBox = null;
     }
 

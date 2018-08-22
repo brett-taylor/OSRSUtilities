@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <HBox id="mainBackground" alignment="CENTER" layoutY="37.0" prefHeight="100.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <children>
+            <VBox id="innerMainLayout" maxHeight="500.0" maxWidth="700.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" style="-fx-background-radius: 0 0 0 0;">
+               <effect>
+                  <DropShadow />
+               </effect>
+               <children>
+                  <AnchorPane id="headingBody" maxHeight="60.0" maxWidth="1.7976931348623157E308" minHeight="60.0" prefHeight="60.0" prefWidth="200.0" style="-fx-background-color: -accent-color;">
+                     <children>
+                        <Label id="headingLabel" style="-fx-text-fill: white;" text="Select a Item" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="15.0">
+                           <font>
+                              <Font name="Open Sans Light" size="18.0" />
+                           </font>
+                        </Label>
+                     </children></AnchorPane>
+                  <AnchorPane id="mainBody" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: -background-color;" VBox.vgrow="ALWAYS">
+                     <children>
+                        <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="5.0">
+                           <children>
+                              <HBox id="searchBoxContainer" alignment="CENTER" maxHeight="40.0" prefHeight="40.0" prefWidth="200.0" />
+                              <ScrollPane id="scrollPane" fitToHeight="true" fitToWidth="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                                 <styleClass>
+                                    <String fx:value="invis-scrollpane" />
+                                    <String fx:value="edge-to-edge" />
+                                 </styleClass>
+                                 <content>
+                                    <FlowPane alignment="TOP_CENTER" columnHalignment="CENTER" hgap="5.0" prefHeight="200.0" prefWidth="200.0" vgap="5.0" />
+                                 </content>
+                                 <VBox.margin>
+                                    <Insets top="5.0" />
+                                 </VBox.margin>
+                              </ScrollPane>
+                           </children>
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" />
+                           </padding>
+                        </VBox>
+                     </children></AnchorPane>
+                  <AnchorPane maxHeight="50.0" prefHeight="50.0" prefWidth="200.0">
+                     <children>
+                        <Pane maxHeight="30.0" prefHeight="30.0" prefWidth="700.0" style="-fx-background-color: -background-color;" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                        <HBox id="buttonRow" alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="0.0" />
+                     </children></AnchorPane>
+               </children>
+               <HBox.margin>
+                  <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+               </HBox.margin>
+            </VBox>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>

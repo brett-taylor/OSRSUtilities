@@ -2,12 +2,11 @@ package app;
 
 import app.data.DataLoadResult;
 import app.data.DataManager;
+import app.data.loadouts.Loadout;
+import app.data.loadouts.LoadoutManager;
 import app.ui.OSRSUtilitiesWindow;
-import app.ui.components.DialogBox;
-import app.ui.pages.BlacklistPage;
-import app.ui.pages.DownloadsPage;
-import app.ui.pages.LoadoutPage;
-import app.ui.pages.TestPage;
+import app.ui.components.popups.DialogBox;
+import app.ui.pages.*;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.stage.Stage;
@@ -48,7 +47,8 @@ public class OSRSUtilities extends Application {
             DialogBox.showError(message.toString(), true);
         }
 
-        window.showPage(new LoadoutPage());
+        Loadout loadout = LoadoutManager.load("other one");
+        window.showPage(new LoadoutPage(loadout));
     }
 
     /**

@@ -3,10 +3,10 @@ package app.data.categories;
 import app.data.DataManager;
 import app.data.DatabaseSQLExecuteResult;
 import app.data.SQLStatement;
-import app.data.events.OnCategoryDownloadUpdateEvent;
+import app.data.OnCategoryDownloadUpdateEvent;
 import app.data.tables.CategoryTable;
 import app.data.wiki.WikiBlacklist;
-import app.ui.components.DialogBox;
+import app.ui.components.popups.DialogBox;
 import app.data.wiki.WikiList;
 import app.data.wiki.WikiListValues;
 
@@ -44,7 +44,7 @@ public enum DownloadCategories {
     ALL_BODY("Body_slot_items", "Body Items", "Body_slot_items", DownloadCategoriesType.ITEM),
     ALL_SHIELD("Shield_slot_items", "Shield Items", "Shield_slot_items", DownloadCategoriesType.ITEM),
     ALL_LEGS("Leg_slot_items", "Leg Items", "Leg_slot_items", DownloadCategoriesType.ITEM),
-    ALL_GLOVES("Hand_slot_items", "Globes", "Hand_slot_items", DownloadCategoriesType.ITEM),
+    ALL_GLOVES("Hand_slot_items", "Gloves", "Hand_slot_items", DownloadCategoriesType.ITEM),
     ALL_BOOTS("Feet_slot_items", "Boots", "Feet_slot_items", DownloadCategoriesType.ITEM),
     ALL_RINGS("Ring_slot_items", "Rings", "Ring_slot_items", DownloadCategoriesType.ITEM),
 

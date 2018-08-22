@@ -1,6 +1,6 @@
-package app.ui.components.loadouts;
+package app.ui.components.items;
 
-import app.data.models.Item;
+import app.data.runescape.Item;
 import app.ui.components.WikiImage;
 
 /**
@@ -27,5 +27,12 @@ public class ItemSprite extends WikiImage {
         setMaxWidth(ItemHotspot.WIDTH);
         setMaxHeight(ItemHotspot.HEIGHT);
         setMouseTransparent(true);
+    }
+
+    /**
+     * @return The item it is representing.
+     */
+    public Item getItem() {
+        return item;
     }
 }

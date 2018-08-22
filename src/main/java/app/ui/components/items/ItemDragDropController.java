@@ -1,7 +1,7 @@
-package app.ui.components.loadouts;
+package app.ui.components.items;
 
 import app.OSRSUtilities;
-import app.ui.components.DialogBox;
+import app.ui.components.popups.DialogBox;
 import javafx.animation.AnimationTimer;
 import javafx.scene.layout.Pane;
 

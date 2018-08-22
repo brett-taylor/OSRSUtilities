@@ -1,9 +1,9 @@
 package app.ui.pages;
 
 import app.data.categories.DownloadCategoriesStatus;
-import app.ui.components.DialogBox;
+import app.ui.components.popups.DialogBox;
 import app.ui.components.buttons.CircularButton;
-import app.ui.components.CategoryDownloadButton;
+import app.ui.components.buttons.CategoryDownloadButton;
 import app.ui.components.buttons.SquareButton;
 import app.utils.CSSColorParser;
 import app.data.categories.DownloadCategories;
@@ -12,10 +12,8 @@ import javafx.application.Platform;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 
@@ -42,7 +40,7 @@ public class DownloadsPage extends BasePage {
         downloadAll.setBackgroundHoverColor(CSSColorParser.parseColor("-background-color"));
         downloadAll.setGlyph(FontAwesomeIcon.ELLIPSIS_V, Color.WHITE);
         downloadAll.setSize(25d);
-        downloadAll.setGlyphSize("27");
+        downloadAll.setGlyphSize(27);
         downloadAll.setOnClicked(this::showMenu);
 
         Pane downloadButtonHolder = (Pane) lookup("#downloadButtonHolder");
