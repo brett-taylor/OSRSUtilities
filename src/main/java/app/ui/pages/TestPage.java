@@ -1,6 +1,10 @@
 package app.ui.pages;
 
-import app.ui.components.popups.searchItem.SelectItemPopup;
+import app.data.runescape.Item;
+import app.ui.components.items.ItemHotspot;
+import app.ui.components.items.ItemHover;
+import app.ui.components.items.ItemSprite;
+import app.ui.components.popups.searchitem.SelectItemPopup;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 
@@ -18,16 +22,20 @@ public class TestPage extends BasePage {
 
     @Override
     public void onLoaded() {
-        Button button = new Button();
-        button.setText("Click");
-        ((AnchorPane) getParentElement()).getChildren().addAll(button);
-        AnchorPane.setLeftAnchor(button, 300d);
-        AnchorPane.setTopAnchor(button , 300d);
-        button.setOnMouseClicked((e) -> {
-            SelectItemPopup popup = SelectItemPopup.show();
-            popup.setOnSelectItemCancelled(() -> System.out.println("Cancelled searchItem"));
-            popup.setOnSelectItemConfirmed((item) -> System.out.println("Item chosne: " + item.getName()));
-        });
+        ItemHotspot ih = new ItemHotspot();
+        ((AnchorPane) getParentElement()).getChildren().addAll(ih);
+        AnchorPane.setLeftAnchor(ih, 300d);
+        AnchorPane.setTopAnchor(ih, 300d);
+
+        Item item = Item.load("Rune pouch");
+        item.setStackSize(15643763);
+        item.getItemsInside().add(Item.load("Fire rune", 12500));
+        item.getItemsInside().add(Item.load("Law rune", 12500000));
+        item.getItemsInside().add(Item.load("Air rune", 125000));
+
+        ih.attachItem(new ItemSprite(item));
+
+        ItemHover itemHover = new ItemHover(item);
     }
 
     @Override

@@ -101,8 +101,6 @@ public abstract class PopupMenu extends FXMLElement {
             }
         };
         updateTimer.start();
-
-        OSRSUtilities.getWindow().getMainLayout().getChildren().add(this);
     }
 
     /**
@@ -115,8 +113,9 @@ public abstract class PopupMenu extends FXMLElement {
     /**
      * Starts the hello animation.
      */
-    protected void startHelloAnimation() {
+    public void startHelloAnimation() {
         setVisible(true);
+        OSRSUtilities.getWindow().getMainLayout().getChildren().add(this);
         mainBackground.setLayoutY(OSRSUtilities.getWindow().getPrimaryStage().getHeight() + 5);
 
         Timeline timeline = new Timeline();
@@ -140,7 +139,7 @@ public abstract class PopupMenu extends FXMLElement {
     /**
      * Starts the bye animation.
      */
-    protected void startByeAnimation() {
+    public void startByeAnimation() {
         Timeline timeline = new Timeline();
         timeline.setCycleCount(1);
         timeline.getKeyFrames().add(

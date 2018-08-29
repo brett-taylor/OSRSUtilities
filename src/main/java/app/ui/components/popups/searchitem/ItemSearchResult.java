@@ -1,4 +1,4 @@
-package app.ui.components.popups.searchItem;
+package app.ui.components.popups.searchitem;
 
 import app.data.runescape.Item;
 import app.ui.components.items.ItemSprite;
@@ -142,7 +142,7 @@ public class ItemSearchResult extends AnchorPane {
     }
 
     /**
-     * Selects this item searchItem result.
+     * Selects this item searchitem result.
      */
     public void setSelectedBorder() {
         background.setStroke(CSSColorParser.parseColor("-good-color"));
@@ -150,7 +150,7 @@ public class ItemSearchResult extends AnchorPane {
     }
 
     /**
-     * Unselects this item searchItem result.
+     * Unselects this item searchitem result.
      */
     public void setNormalBorder() {
         background.setStroke(Color.BLACK);

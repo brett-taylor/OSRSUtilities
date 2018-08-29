@@ -1,7 +1,9 @@
 package app.ui.components.items;
 
 import app.data.loadouts.events.OnItemHotspotItemChanged;
-import app.ui.components.popups.searchItem.SelectItemPopup;
+import app.data.runescape.Item;
+import app.ui.components.popups.edititem.EditItemPopup;
+import app.ui.components.popups.searchitem.SelectItemPopup;
 import app.utils.CSSColorParser;
 import javafx.animation.FillTransition;
 import javafx.scene.Cursor;
@@ -67,6 +69,21 @@ public class ItemHotspot extends AnchorPane {
     private boolean itemDraggingEnabled = true;
 
     /**
+     * Shows the stack size of the item.
+     */
+    private StackSizeLabel stackSize;
+
+    /**
+     * The item hover to show detailed information about item. There should only be one on screen ever thus its static.
+     */
+    private static ItemHover itemHover;
+
+    /**
+     * Should show detailed information about the item when hovered?
+     */
+    private boolean shouldShowItemDetailsWhenHovered = true;
+
+    /**
      * Constructor.
      */
     public ItemHotspot() {
@@ -89,6 +106,11 @@ public class ItemHotspot extends AnchorPane {
         AnchorPane.setRightAnchor(background, 0d);
         AnchorPane.setBottomAnchor(background, 0d);
 
+        stackSize = new StackSizeLabel();
+        getChildren().add(stackSize);
+        AnchorPane.setLeftAnchor(stackSize, 3d);
+        AnchorPane.setTopAnchor(stackSize, 2d);
+
         setOnMouseEntered(this::onMouseEntered);
         setOnMouseExited(this::onMouseExited);
         setOnDragDetected(this::onDragStarted);
@@ -110,6 +132,7 @@ public class ItemHotspot extends AnchorPane {
         AnchorPane.setRightAnchor(item, 0d);
         AnchorPane.setBottomAnchor(item, 0d);
         item.toFront();
+        stackSize.setStackSize(attachedItem.getItem().getStackSize());
 
         if (onItemHotspotItemChanged != null)
             onItemHotspotItemChanged.onItemHotspotItemChanged(this, attachedItem.getItem());
@@ -125,6 +148,7 @@ public class ItemHotspot extends AnchorPane {
 
             getChildren().remove(attachedItem);
             attachedItem = null;
+            stackSize.setStackSize(0);
         }
     }
 
@@ -147,6 +171,17 @@ public class ItemHotspot extends AnchorPane {
         FillTransition ft = new FillTransition(HOVER_ANIMATION_TIME, background, BACKGROUND_COLOR, BACKGROUND_HOVER_COLOR);
         ft.setCycleCount(1);
         ft.play();
+
+        if (attachedItem != null) {
+            if (itemHover != null) {
+                itemHover.destroy();
+                itemHover = null;
+            }
+
+            if (shouldShowItemDetailsWhenHovered) {
+                itemHover = new ItemHover(attachedItem.getItem());
+            }
+        }
     }
 
     /**
@@ -158,6 +193,11 @@ public class ItemHotspot extends AnchorPane {
         FillTransition ft = new FillTransition(HOVER_ANIMATION_TIME, background, BACKGROUND_HOVER_COLOR, BACKGROUND_COLOR);
         ft.setCycleCount(1);
         ft.play();
+
+        if (itemHover != null) {
+            itemHover.destroy();
+            itemHover = null;
+        }
     }
 
     /**
@@ -214,8 +254,30 @@ public class ItemHotspot extends AnchorPane {
      * @param e The mouse event
      */
     private void onMouseClicked(MouseEvent e) {
-        SelectItemPopup popup = SelectItemPopup.show();
-        popup.setOnSelectItemConfirmed((item) -> attachItem(new ItemSprite(item)));
+        if (getAttachedItem() == null) {
+            SelectItemPopup popup = SelectItemPopup.show();
+            popup.setOnSelectItemConfirmed((item) ->  {
+                createEditItemPopup(item, 1, false);
+            });
+        } else {
+            createEditItemPopup(attachedItem.getItem(), attachedItem.getItem().getStackSize(), true);
+        }
+    }
+
+    /**
+     * Creates the edit item popup.
+     * @param item The item to be default selected.
+     * @param stackSize The stack size.
+     * @param showDeleteButton Should show delete button or not.
+     */
+    private void createEditItemPopup(Item item, int stackSize, boolean showDeleteButton) {
+        EditItemPopup popup = new EditItemPopup(item, stackSize, true, showDeleteButton);
+        popup.startHelloAnimation();
+        popup.setOnRequestToDestroy(this::unattachItem);
+        popup.setOnEditItemSuccess((newItem) -> {
+            unattachItem();
+            attachItem(new ItemSprite(newItem));
+        });
     }
 
     /**
@@ -232,5 +294,28 @@ public class ItemHotspot extends AnchorPane {
      */
     public void setItemDragging(boolean itemDragging) {
         itemDraggingEnabled = itemDragging;
+    }
+
+    /**
+     * Sets the stack size's visibility.
+     * @param visible True if the stack size should be visible.
+     */
+    public void setStackSizeVisible(boolean visible) {
+        stackSize.setVisible(visible);
+    }
+
+    /**
+     * Hides the background
+     */
+    public void hideBackground() {
+        background.setVisible(false);
+    }
+
+    /**
+     * Sets whether or not when the item hotspot is hovered a popup showing the items details will occur.
+     * @param show True if you wish this to happen.
+     */
+    public void setShouldShowItemDetailsWhenHovered(boolean show) {
+        shouldShowItemDetailsWhenHovered = show;
     }
 }

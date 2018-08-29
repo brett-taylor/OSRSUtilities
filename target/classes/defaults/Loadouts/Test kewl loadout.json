@@ -1,0 +1,146 @@
+{
+  "equipment": [
+    [
+      {},
+      {
+        "name": "Slayer helmet",
+        "stack": 1
+      },
+      {},
+      {
+        "name": "Infernal max cape",
+        "stack": 1
+      },
+      {
+        "name": "Amulet of torture",
+        "stack": 1
+      },
+      {},
+      {
+        "name": "Ghrazi rapier",
+        "stack": 1
+      },
+      {
+        "name": "Bandos chestplate",
+        "stack": 1
+      },
+      {
+        "name": "Dragon defender",
+        "stack": 1
+      },
+      {},
+      {
+        "name": "Bandos tassets",
+        "stack": 1
+      },
+      {},
+      {
+        "name": "Barrows gloves",
+        "stack": 1
+      },
+      {
+        "name": "Fancy boots",
+        "stack": 1
+      },
+      {
+        "name": "Berserker ring",
+        "stack": 1
+      }
+    ]
+  ],
+  "inventory": [
+    [
+      {
+        "name": "Armadyl godsword",
+        "stack": 1
+      },
+      {},
+      {
+        "name": "Dragon claws",
+        "stack": 1
+      },
+      {
+        "name": "Void ranger helm",
+        "stack": 1
+      },
+      {},
+      {
+        "name": "Saradomin full helm",
+        "stack": 1
+      },
+      {},
+      {},
+      {
+        "name": "Rune sword",
+        "stack": 1
+      },
+      {
+        "name": "Saradomin platebody",
+        "stack": 1
+      },
+      {
+        "name": "Saradomin kiteshield",
+        "stack": 1
+      },
+      {
+        "name": "Fire cape",
+        "stack": 1
+      },
+      {},
+      {
+        "name": "Bandos tassets",
+        "stack": 1
+      },
+      {},
+      {
+        "name": "Absorption",
+        "stack": 1
+      },
+      {
+        "name": "Primordial boots",
+        "stack": 1
+      },
+      {
+        "name": "Abyssal whip",
+        "stack": 1
+      },
+      {
+        "name": "Toxic blowpipe",
+        "stack": 1
+      },
+      {},
+      {
+        "name": "Monkfish",
+        "stack": 1
+      },
+      {
+        "name": "Saradomin platelegs",
+        "stack": 1
+      },
+      {
+        "name": "Necklace of anguish",
+        "stack": 1
+      },
+      {
+        "name": "Twisted bow",
+        "stack": 1
+      },
+      {
+        "name": "Monkfish",
+        "stack": 1
+      },
+      {
+        "name": "Super attack",
+        "stack": 1
+      },
+      {
+        "name": "Super strength",
+        "stack": 1
+      },
+      {
+        "name": "Super defence",
+        "stack": 1
+      }
+    ]
+  ]
+}

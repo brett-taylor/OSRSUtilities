@@ -4,7 +4,9 @@ import app.ui.components.SideMenu;
 import app.ui.pages.BasePage;
 import com.jfoenix.svg.SVGGlyphLoader;
 import javafx.application.Platform;
+import javafx.event.EventHandler;
 import javafx.scene.Scene;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
@@ -86,6 +88,10 @@ public class OSRSUtilitiesWindow {
 
         sideMenu = new SideMenu();
         primaryStage.show();
+
+        scene.addEventFilter(KeyEvent.KEY_PRESSED, ke -> {
+            // TO:DO SHORT CUTS
+        });
     }
 
     /**

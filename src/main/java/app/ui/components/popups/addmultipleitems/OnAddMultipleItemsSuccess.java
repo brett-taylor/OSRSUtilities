@@ -1,4 +1,4 @@
-package app.ui.components.popups.addMultipleItems;
+package app.ui.components.popups.addmultipleitems;
 
 import app.data.runescape.Item;
 

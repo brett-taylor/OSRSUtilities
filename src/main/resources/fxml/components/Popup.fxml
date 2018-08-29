@@ -26,7 +26,7 @@
                         </Label>
                      </children></AnchorPane>
                   <AnchorPane id="mainBody" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: -background-color;" VBox.vgrow="ALWAYS" />
-                  <AnchorPane maxHeight="100.0" prefHeight="100.0" prefWidth="200.0">
+                  <AnchorPane maxHeight="40.0" minHeight="40.0" prefHeight="40.0" prefWidth="200.0" VBox.vgrow="NEVER">
                      <children>
                         <Pane maxHeight="40.0" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: -background-color;" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                         <HBox id="buttonRow" alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="0.0" />

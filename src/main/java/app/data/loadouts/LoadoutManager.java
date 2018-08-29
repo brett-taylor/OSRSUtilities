@@ -115,8 +115,18 @@ public class LoadoutManager {
     private static Item loadItemFromJsonObject(JsonObject jsonObject) {
         String itemName = jsonObject.get("name").getAsString();
         int stackSize = jsonObject.get("stack").getAsInt();
-
         Item i = Item.load(itemName);
+        i.setStackSize(stackSize);
+
+        JsonElement itemsWithin  = jsonObject.get("itemsInside");
+        if (itemsWithin != null) {
+            List<Item> itemsInside = new ArrayList<>();
+            for (JsonElement arrayElement : itemsWithin.getAsJsonArray()) {
+                JsonObject possibleItem = arrayElement.getAsJsonObject();
+                itemsInside.add(loadItemFromJsonObject(possibleItem));
+            }
+            i.getItemsInside().addAll(itemsInside);
+        }
         return i;
     }
 
@@ -168,7 +178,17 @@ public class LoadoutManager {
     private static JsonObject generateItemJSON(Item item) {
         JsonObject itemObject = new JsonObject();
         itemObject.addProperty("name", item.getName());
-        itemObject.addProperty("stack", 1);
+        itemObject.addProperty("stack", item.getStackSize());
+
+        if (!item.getItemsInside().isEmpty()) {
+            JsonArray itemsInside = new JsonArray();
+            for (Item itemInside :item.getItemsInside()) {
+                itemsInside.add(generateItemJSON(itemInside));
+            }
+
+            itemObject.add("itemsInside", itemsInside);
+        }
+
         return itemObject;
     }
 }

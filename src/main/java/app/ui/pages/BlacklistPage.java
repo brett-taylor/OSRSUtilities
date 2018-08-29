@@ -27,12 +27,12 @@ import java.util.Objects;
  */
 public class BlacklistPage extends BasePage {
     /**
-     * The searchItem result area.
+     * The searchitem result area.
      */
     private VBox resultArea;
 
     /**
-     * The thread that the searchItem will work on.
+     * The thread that the searchitem will work on.
      */
     private Thread searchThread;
 
@@ -129,7 +129,7 @@ public class BlacklistPage extends BasePage {
     }
 
     /**
-     * Called when the searchItem button is clicked.
+     * Called when the searchitem button is clicked.
      * @param phrase The phrase that should be in the url.
      */
     private void searchAndShow(String phrase) {

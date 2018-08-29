@@ -32,6 +32,16 @@ public class Item {
     private Integer wikiID;
 
     /**
+     * The stack size of the item.
+     */
+    private int stackSize;
+
+    /**
+     * Items stored inside of this item.
+     */
+    private List<Item> itemsInside = new ArrayList<>();
+
+    /**
      * Creates a item.
      * @param name Name of the item.
      * @param wikiURL Wiki name of the item.
@@ -41,6 +51,7 @@ public class Item {
         this.name = name;
         this.wikiURL = wikiURL;
         this.wikiID  = wikiID;
+        stackSize = 1;
     }
 
     /**
@@ -109,6 +120,15 @@ public class Item {
      * @param name The name of the item.
      */
     public static Item load(String name) {
+        return load(name, 1);
+    }
+
+    /**
+     * Loads a item from the database with a given name.
+     * @param name The name of the item.
+     * @param amount The item stack size.
+     */
+    public static Item load(String name, int amount) {
         SQLStatement sqlStatement = new SQLStatement("SELECT nameColumn, wikiURLColumn, wikiIDColumn FROM tableName WHERE nameColumn = itemName;");
         sqlStatement.bindParam("tableName", ItemTable.TABLE_NAME);
         sqlStatement.bindParam("nameColumn", ItemTable.NAME_COLUMN_PK);
@@ -124,11 +144,14 @@ public class Item {
 
         try {
             if (execute.getResultSet().next()) {
-                return new Item(
+                Item item = new Item(
                         execute.getResultSet().getString(ItemTable.NAME_COLUMN_PK),
                         execute.getResultSet().getString(ItemTable.WIKI_URL_COLUMN),
                         execute.getResultSet().getInt(ItemTable.WIKI_ID_COLUMN)
                 );
+
+                item.setStackSize(amount);
+                return item;
             }
         } catch (SQLException e) {
             DialogBox.showError("Failed to load Item with following name: " + name + ". \n" + execute.getErrorMessage());
@@ -174,5 +197,27 @@ public class Item {
         }
 
         return items;
+    }
+
+    /**
+     * @return The stack size of the item.
+     */
+    public int getStackSize() {
+        return stackSize;
+    }
+
+    /**
+     * Sets the stack size of the item.
+     * @param newStackSize The new stack size.
+     */
+    public void setStackSize(int newStackSize) {
+        stackSize = newStackSize;
+    }
+
+    /**
+     * @return A list of items inside of this item.
+     */
+    public List<Item> getItemsInside() {
+        return itemsInside;
     }
 }

@@ -1,4 +1,4 @@
-package app.ui.components.popups.searchItem;
+package app.ui.components.popups.searchitem;
 
 import app.OSRSUtilities;
 import app.data.runescape.Item;
@@ -68,7 +68,7 @@ public class SelectItemPopup extends FXMLElement {
     private boolean canBeSubmitted = false;
 
     /**
-     * The item searchItem result area.
+     * The item searchitem result area.
      */
     private FlowPane itemGrid;
 
@@ -266,8 +266,8 @@ public class SelectItemPopup extends FXMLElement {
     }
 
     /**
-     * Called when the text changes on the searchItem box.
-     * @param phrase The phrase to searchItem for.
+     * Called when the text changes on the searchitem box.
+     * @param phrase The phrase to searchitem for.
      */
     private void search(String phrase) {
         if (searchThread != null) {
@@ -319,7 +319,7 @@ public class SelectItemPopup extends FXMLElement {
     }
 
     /**
-     * Resets the currently selected item searchItem result.
+     * Resets the currently selected item searchitem result.
      */
     private void resetSelectedItemSearchResult() {
         if (currentItemSearchResultSelected != null) {
@@ -331,9 +331,9 @@ public class SelectItemPopup extends FXMLElement {
     }
 
     /**
-     * Called when a item searchItem result when it was clicked.
-     * @param self The item searchItem result that was clicked.
-     * @param item The item the item searchItem was representing.
+     * Called when a item searchitem result when it was clicked.
+     * @param self The item searchitem result that was clicked.
+     * @param item The item the item searchitem was representing.
      */
     private void onItemSearchResultClicked(ItemSearchResult self, Item item) {
         if (currentItemSearchResultSelected == self) {

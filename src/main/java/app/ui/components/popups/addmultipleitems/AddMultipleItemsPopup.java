@@ -1,4 +1,4 @@
-package app.ui.components.popups.addMultipleItems;
+package app.ui.components.popups.addmultipleitems;
 
 import app.data.runescape.Item;
 import app.ui.components.buttons.CircularButton;
@@ -6,7 +6,7 @@ import app.ui.components.buttons.SquareButton;
 import app.ui.components.items.ItemHotspot;
 import app.ui.components.items.ItemSprite;
 import app.ui.components.popups.PopupMenu;
-import app.ui.components.popups.searchItem.SelectItemPopup;
+import app.ui.components.popups.searchitem.SelectItemPopup;
 import app.utils.CSSColorParser;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import javafx.geometry.Insets;
@@ -61,6 +61,7 @@ public class AddMultipleItemsPopup extends PopupMenu {
      * @param item Can be null.
      */
     public AddMultipleItemsPopup(Item item) {
+        heading.setText("Add Inventory Items");
         CircularButton cancelledButton = CircularButton.failedButton();
         buttonRow.getChildren().add(cancelledButton);
         cancelledButton.setOnClicked(this::startByeAnimation);
@@ -79,8 +80,6 @@ public class AddMultipleItemsPopup extends PopupMenu {
                 startByeAnimation();
             }
         });
-
-        heading.setText("Add Inventory Items");
 
         layout = new VBox();
         mainBody.getChildren().add(layout);
@@ -146,13 +145,6 @@ public class AddMultipleItemsPopup extends PopupMenu {
     }
 
     /**
-     * Shows the popup.
-     */
-    public void show() {
-        startHelloAnimation();
-    }
-
-    /**
      * Called when the item hotspot has been clicked
      * @param currentSelectedItem Current selected item. Can be null.
      */
@@ -163,12 +155,12 @@ public class AddMultipleItemsPopup extends PopupMenu {
 
         popup.setOnSelectItemCancelled(() ->  {
             AddMultipleItemsPopup addMultipleItemsPopup = new AddMultipleItemsPopup(currentSelectedItem);
-            addMultipleItemsPopup.show();
+            addMultipleItemsPopup.startHelloAnimation();
         });
 
         popup.setOnSelectItemConfirmed((item) -> {
             AddMultipleItemsPopup addMultipleItemsPopup = new AddMultipleItemsPopup(item);
-            addMultipleItemsPopup.show();
+            addMultipleItemsPopup.startHelloAnimation();
             addMultipleItemsPopup.setOnAddMultipleItemsSuccess(listener);
         });
     }

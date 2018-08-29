@@ -3,8 +3,7 @@ package app.ui.pages;
 import app.OSRSUtilities;
 import app.data.loadouts.Loadout;
 import app.data.loadouts.LoadoutManager;
-import app.data.runescape.Item;
-import app.ui.components.popups.addMultipleItems.AddMultipleItemsPopup;
+import app.ui.components.popups.addmultipleitems.AddMultipleItemsPopup;
 import app.ui.components.popups.DialogBox;
 import app.ui.components.buttons.CircularButton;
 import app.ui.components.buttons.SquareButton;
@@ -14,6 +13,7 @@ import app.ui.components.items.ItemDragDropController;
 import app.utils.CSSColorParser;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import javafx.application.Platform;
+import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
@@ -74,6 +74,10 @@ public class LoadoutPage extends BasePage {
         itemContainersView = (HBox) scrollPaneContents.lookup("#itemContainersView");
         Objects.requireNonNull(itemContainersView);
         itemContainersView.getChildren().addAll(equipmentTab, inventoryTab);
+
+        Label loadoutTitle = (Label) lookup("#loadoutTitle");
+        Objects.requireNonNull(loadoutTitle);
+        loadoutTitle.setText(loadout.getName());
 
         HBox buttonContainer = (HBox) scrollPaneContents.lookup("#buttonContainer");
         Objects.requireNonNull(buttonContainer);
@@ -142,7 +146,7 @@ public class LoadoutPage extends BasePage {
      */
     private void onAddItemsClicked() {
         AddMultipleItemsPopup addMultipleItemsPopup = new AddMultipleItemsPopup(null);
-        addMultipleItemsPopup.show();
+        addMultipleItemsPopup.startHelloAnimation();
         addMultipleItemsPopup.setOnAddMultipleItemsSuccess((item, amount) -> inventoryTab.addMultipleItems(item, amount));
     }
 }
