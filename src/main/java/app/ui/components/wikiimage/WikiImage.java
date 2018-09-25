@@ -32,13 +32,31 @@ public class WikiImage extends BorderPane {
     private JFXSpinner spinner;
 
     /**
+     * If true it will pick the last image it found. Useful for items not useful for monsters.
+     */
+    private Boolean pickLastPicture;
+
+    /**
+     * The image view.
+     */
+    private ImageView imageView;
+
+    /**
+     * A runnable that gets executed when the image is finally loaded.
+     */
+    private Runnable onImageLoaded;
+
+    /**
      * Constructs a image box that has the ability to grab a image from the wiki and show a spinner while it downloads.
      * @param fileName The name of the image if it is already downloaded.
      * @param url The address of the image if it is not downloaded.
+     * @param pickLastPicture If true it will pick the last image it found. Useful for items not useful for monsters.
+     * @param onImageLoaded A runnable that gets executed when the image is finally loaded.
      */
-    public WikiImage(String fileName, String url) {
+    public WikiImage(String fileName, String url, boolean pickLastPicture, Runnable onImageLoaded) {
         this.fileName = fileName;
         this.url = url;
+        this.pickLastPicture = pickLastPicture;
 
         if (fileName.isEmpty() || url.isEmpty())
             throw new Error("WikiImage must have a valid fileName and url.");
@@ -57,7 +75,7 @@ public class WikiImage extends BorderPane {
             }
         } else {
             Platform.runLater(this::showSpinner);
-            String url = ImageManager.wikiArticleImageUrl(this.url);
+            String url = ImageManager.wikiArticleImageUrl(this.url, pickLastPicture);
             ImageManager.downloadAndSaveImage(url, fileName, () -> {
                 Image image = ImageManager.getImageOnDisk(fileName);
                 if (image == null) {
@@ -73,10 +91,14 @@ public class WikiImage extends BorderPane {
      * @param image the image to show.
      */
     private void showImage(Image image) {
-        ImageView imageView = new ImageView();
+        imageView = new ImageView();
         imageView.setImage(image);
         imageView.setMouseTransparent(true);
         setCenter(imageView);
+
+        if (onImageLoaded != null) {
+            onImageLoaded.run();
+        }
     }
 
     /**
@@ -87,5 +109,12 @@ public class WikiImage extends BorderPane {
         spinner.setRadius(10d);
         spinner.setMouseTransparent(true);
         setCenter(spinner);
+    }
+
+    /**
+     * @return The image view.
+     */
+    public ImageView getImageView() {
+        return imageView;
     }
 }
