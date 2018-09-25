@@ -1,7 +1,7 @@
 package app.ui.components.items;
 
 import app.data.runescape.Item;
-import app.ui.components.WikiImage;
+import app.ui.components.wikiimage.WikiImage;
 
 /**
  * Shows the associated item's image.
@@ -18,7 +18,7 @@ public class ItemSprite extends WikiImage {
      * @param item The item the item sprite should represent.
      */
     public ItemSprite(Item item) {
-        super(item.getName(), item.getWikiURLEnding());
+        super(item.getName(), item.getWikiURLEnding(), true, null);
         this.item = item;
         setPrefWidth(ItemHotspot.WIDTH);
         setPrefHeight(ItemHotspot.HEIGHT);

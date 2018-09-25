@@ -103,9 +103,10 @@ public class ImageManager {
     /**
      * Gets the url of the image attached to the article.
      * @param articleURL the url of the article. In form on e.g. /wiki/Dragon_scimitar
+     * @param pickLastPicture If true it will pick the last image it found. Useful for items not useful for monsters.
      * @return The url of the article image.
      */
-    public static String wikiArticleImageUrl(String articleURL) {
+    public static String wikiArticleImageUrl(String articleURL, boolean pickLastPicture) {
         String webSiteURL = OSRSUtilities.WIKI_ADDRESS + articleURL;
         Document doc;
         Elements imageElements = null;
@@ -120,6 +121,7 @@ public class ImageManager {
                     .getElementsByClass("infobox-wrapper")
                     .get(0).getElementsByClass("wikitable infobox")
                     .get(0).getElementsByTag("img");
+
         } catch (Exception e) {
             e.printStackTrace();
             return null;
@@ -143,7 +145,7 @@ public class ImageManager {
 
         // If there are equal or more than 3 items we pick the last one.
         // For example bolts or coins we want to display the biggest stack.
-        if (imageElements.size() >= 3) {
+        if (imageElements.size() >= 3 && pickLastPicture) {
             return imageElements.last().absUrl("src");
         }
 

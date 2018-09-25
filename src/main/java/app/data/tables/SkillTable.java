@@ -1,14 +1,14 @@
 package app.data.tables;
 
 /**
- * The name of the column and tables for the Monster table.
+ * The name of the column and tables for the Skill table.
  * @author Brett Taylor
  */
-public class MonsterTable {
+public class SkillTable {
     /**
      * The table name
      */
-    public static final String TABLE_NAME = "Monsters";
+    public static final String TABLE_NAME = "Skills";
 
     /**
      * The name column - Primary key in this table.

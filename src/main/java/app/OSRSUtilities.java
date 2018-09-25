@@ -47,8 +47,9 @@ public class OSRSUtilities extends Application {
             DialogBox.showError(message.toString(), true);
         }
 
-        Loadout loadout = LoadoutManager.load("other one");
-        window.showPage(new LoadoutPage(loadout));
+        //Loadout loadout = LoadoutManager.load("Vorkath");
+        //window.showPage(new LoadoutPage(loadout));
+        window.showPage(new TestPage());
     }
 
     /**

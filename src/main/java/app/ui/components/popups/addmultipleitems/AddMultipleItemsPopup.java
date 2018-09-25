@@ -68,7 +68,8 @@ public class AddMultipleItemsPopup extends PopupMenu {
 
         submitButton = CircularButton.successButton();
         buttonRow.getChildren().add(submitButton);
-        submitButton.setOnClicked(() -> {
+
+        Runnable onSubmitClicked = () -> {
             if (canBeSubmitted) {
                 if (onAddMultipleItemsSuccess != null) {
                     onAddMultipleItemsSuccess.onSucecss(
@@ -79,7 +80,11 @@ public class AddMultipleItemsPopup extends PopupMenu {
 
                 startByeAnimation();
             }
-        });
+        };
+
+        submitButton.setOnClicked(onSubmitClicked);
+        setOnShortcutFailed(this::startByeAnimation);
+        setOnShortcutSuccess(onSubmitClicked);
 
         layout = new VBox();
         mainBody.getChildren().add(layout);
@@ -151,17 +156,13 @@ public class AddMultipleItemsPopup extends PopupMenu {
     private void onItemHotspotClicked(Item currentSelectedItem) {
         startByeAnimation();
         SelectItemPopup popup = SelectItemPopup.show();
-        OnAddMultipleItemsSuccess listener = onAddMultipleItemsSuccess;
-
-        popup.setOnSelectItemCancelled(() ->  {
-            AddMultipleItemsPopup addMultipleItemsPopup = new AddMultipleItemsPopup(currentSelectedItem);
-            addMultipleItemsPopup.startHelloAnimation();
-        });
+        popup.setOnSelectItemCancelled(this::startHelloAnimation);
 
         popup.setOnSelectItemConfirmed((item) -> {
-            AddMultipleItemsPopup addMultipleItemsPopup = new AddMultipleItemsPopup(item);
-            addMultipleItemsPopup.startHelloAnimation();
-            addMultipleItemsPopup.setOnAddMultipleItemsSuccess(listener);
+            itemHotspot.unattachItem();
+            itemHotspot.attachItem(new ItemSprite(item));
+            itemName.setText(item.getName());
+            startHelloAnimation();
         });
     }
 

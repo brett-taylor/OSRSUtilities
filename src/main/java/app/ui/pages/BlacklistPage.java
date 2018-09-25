@@ -105,14 +105,9 @@ public class BlacklistPage extends BasePage {
         TextField textField = new TextField();
         textField.getStyleClass().add("nice-textfield");
         DialogBox.showMenu(helpLabel, textField);
+        DialogBox.setPopupShowed(textField::requestFocus);
 
-        CircularButton addButton = CircularButton.successButton();
-        CircularButton nothingButton = CircularButton.failedButton();
-        nothingButton.setOnClicked(DialogBox::close);
-        DialogBox.addToButtonRow(nothingButton);
-        DialogBox.addToButtonRow(addButton);
-
-        addButton.setOnClicked(() -> {
+        Runnable onAddButtonclicked = () -> {
             String textContents = textField.getText();
             if (!textContents.isEmpty()) {
                 DialogBox.clearBody();
@@ -125,7 +120,17 @@ public class BlacklistPage extends BasePage {
                     });
                 }).start();
             }
-        });
+        };
+
+        CircularButton addButton = CircularButton.successButton();
+        addButton.setOnClicked(onAddButtonclicked);
+        CircularButton nothingButton = CircularButton.failedButton();
+        nothingButton.setOnClicked(DialogBox::close);
+        DialogBox.addToButtonRow(nothingButton);
+        DialogBox.addToButtonRow(addButton);
+
+        DialogBox.setShortcutFailed(DialogBox::close);
+        DialogBox.setShortcutSuccess(onAddButtonclicked);
     }
 
     /**

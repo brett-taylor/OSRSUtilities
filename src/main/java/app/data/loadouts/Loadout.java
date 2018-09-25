@@ -21,6 +21,16 @@ public class Loadout {
     private ItemContainer inventory;
 
     /**
+     * The type of thumbnail it should load.
+     */
+    private LoadoutThumbnailType thumbnailType = LoadoutThumbnailType.NONE;
+
+    /**
+     * The name of what it should load.
+     */
+    private String thumbnailName = "";
+
+    /**
      * Creates a loadout.
      * @param name The name of the loadout.
      */
@@ -49,5 +59,35 @@ public class Loadout {
      */
     public ItemContainer getInventory() {
         return inventory;
+    }
+
+    /**
+     * @return The type of thumbnail.
+     */
+    public LoadoutThumbnailType getThumbnailType() {
+        return thumbnailType;
+    }
+
+    /**
+     * @return The thumbnail name.
+     */
+    public String getThumbnailName() {
+        return thumbnailName.isEmpty() ? "NONE" : thumbnailName;
+    }
+
+    /**
+     * Sets the thumbnail type.
+     * @param type the type of thumbnail.
+     */
+    public void setThumbnailType(LoadoutThumbnailType type) {
+        thumbnailType = type;
+    }
+
+    /**
+     * Sets the name of the object the thumbnail will show from the type that has been selected.
+     * @param name the name
+     */
+    public void setThumbnailName(String name) {
+        thumbnailName = name;
     }
 }

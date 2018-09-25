@@ -6,6 +6,7 @@ import com.jfoenix.svg.SVGGlyphLoader;
 import javafx.application.Platform;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Font;
@@ -88,10 +89,8 @@ public class OSRSUtilitiesWindow {
 
         sideMenu = new SideMenu();
         primaryStage.show();
+        scene.addEventFilter(KeyEvent.KEY_PRESSED, ke -> ShortcutManager.activateShortcut(ke.getCode()));
 
-        scene.addEventFilter(KeyEvent.KEY_PRESSED, ke -> {
-            // TO:DO SHORT CUTS
-        });
     }
 
     /**

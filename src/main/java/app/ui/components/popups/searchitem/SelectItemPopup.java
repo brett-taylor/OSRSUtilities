@@ -111,13 +111,15 @@ public class SelectItemPopup extends FXMLElement {
 
         byeButton = CircularButton.failedButton();
         buttonRow.getChildren().add(byeButton);
-        byeButton.setOnClicked(this::hide);
-        byeButton.setOnClicked(() -> {
+        Runnable onBye = () -> {
             hide();
             if (onSelectItemCancelled != null) {
                 onSelectItemCancelled.onCancelled();
             }
-        });
+        };
+
+        byeButton.setOnClicked(onBye);
+
 
         submitButton = CircularButton.successButton();
         buttonRow.getChildren().add(submitButton);
@@ -325,6 +327,7 @@ public class SelectItemPopup extends FXMLElement {
         if (currentItemSearchResultSelected != null) {
             currentItemSearchResultSelected.setNormalBorder();
         }
+
         currentItemSearchResultSelected = null;
         canBeSubmitted = false;
         correctSubmitButton();

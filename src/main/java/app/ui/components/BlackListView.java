@@ -136,16 +136,21 @@ public class BlackListView extends FXMLElement {
         closeButton.setOnClicked(DialogBox::close);
         DialogBox.placeInTopRight(closeButton);
 
-        CircularButton deleteButton = CircularButton.failedButton();
-        deleteButton.setGlyph(FontAwesomeIcon.TRASH_ALT, null);
-        deleteButton.setOnClicked(() -> {
+        Runnable delete = () -> {
             WikiBlacklist.delete(blacklistedURL);
             VBox vbox = (VBox) getParent();
             if (vbox != null) {
                 vbox.getChildren().remove(this);
             }
             DialogBox.close();
-        });
+        };
+
+        CircularButton deleteButton = CircularButton.failedButton();
+        deleteButton.setGlyph(FontAwesomeIcon.TRASH_ALT, null);
         DialogBox.addToButtonRow(deleteButton);
+        deleteButton.setOnClicked(delete);
+
+        DialogBox.setShortcutFailed(DialogBox::close);
+        DialogBox.setShortcutSuccess(delete);
     }
 }

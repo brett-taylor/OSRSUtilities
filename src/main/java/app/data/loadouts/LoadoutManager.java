@@ -53,6 +53,16 @@ public class LoadoutManager {
     }
 
     /**
+     * Checks to see if a loadout already exists.
+     * @param name The name of the loadout to check.
+     * @return True if a loadout with that name already exists.
+     */
+    public static boolean doesLoadoutExist(String name) {
+        File file = new File(LOADOUTS_LOCATION + name + ".json");
+        return file.exists();
+    }
+
+    /**
      * Loads a loadout from a file.
      * @param fileName The name of the file to load it from.
      * @return The loadout.
@@ -85,6 +95,18 @@ public class LoadoutManager {
         Loadout loadout = new Loadout(name);
         loadout.getInventory().placeItems(loadItemsFromJsonArray(json.getAsJsonArray("inventory")));
         loadout.getEquipment().placeItems(loadItemsFromJsonArray(json.getAsJsonArray("equipment")));
+
+        JsonElement thumbnailType = json.get("thumbnailtype");
+        if (thumbnailType != null) {
+            try {
+                LoadoutThumbnailType type =  LoadoutThumbnailType.valueOf(thumbnailType.getAsString());
+                loadout.setThumbnailType(type);
+                loadout.setThumbnailName(json.get("thumbnailname").getAsString());
+            } catch (IllegalArgumentException e) {
+                DialogBox.showError("Failed to load thumbnail information for loadout: " + loadout.getName() +" \n" + e.getMessage());
+            }
+        }
+
         return loadout;
     }
 
@@ -136,6 +158,12 @@ public class LoadoutManager {
      */
     public static void save(Loadout loadout) {
         JsonObject json = new JsonObject();
+
+        // Misc
+        json.addProperty("thumbnailtype", loadout.getThumbnailType().toString());
+        json.addProperty("thumbnailname", loadout.getThumbnailName());
+
+        // Equipment
         JsonArray equipmentItems = new JsonArray();
         equipmentItems.add(generateItemContainerJSON(loadout.getEquipment().getItems()));
         json.add("equipment", equipmentItems);

@@ -249,11 +249,14 @@ public class CategoryDownloadButton extends FXMLElement implements OnCategoryDow
         CircularButton noButton = CircularButton.failedButton();
         DialogBox.addToButtonRow(noButton);
         DialogBox.addToButtonRow(continueButton);
-        continueButton.setOnClicked(() -> {
+        Runnable download = () -> {
             new Thread(() -> category.download()).start();
             DialogBox.close();
-        });
+        };
+        continueButton.setOnClicked(download);
         noButton.setOnClicked(DialogBox::close);
+        DialogBox.setShortcutFailed(DialogBox::close);
+        DialogBox.setShortcutSuccess(download);
     }
 
     /**
@@ -266,12 +269,15 @@ public class CategoryDownloadButton extends FXMLElement implements OnCategoryDow
         CircularButton noButton = CircularButton.failedButton();
         DialogBox.addToButtonRow(noButton);
         DialogBox.addToButtonRow(continueButton);
-        continueButton.setOnClicked(() -> {
+        Runnable delete = () -> {
             category.setDownloadStatus(DownloadCategoriesStatus.NOT_DOWNLOADED);
             category.saveDownloadStatus();
             DialogBox.close();
-        });
+        };
+        DialogBox.setShortcutSuccess(delete);
         noButton.setOnClicked(DialogBox::close);
+        DialogBox.setShortcutFailed(DialogBox::close);
+        DialogBox.setShortcutSuccess(delete);
     }
 
     @Override

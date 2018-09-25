@@ -1,4 +1,4 @@
-package app.ui.components;
+package app.ui.components.wikiimage;
 
 import app.data.ImageManager;
 import com.jfoenix.controls.JFXSpinner;
@@ -44,7 +44,7 @@ public class WikiImage extends BorderPane {
     /**
      * A runnable that gets executed when the image is finally loaded.
      */
-    private Runnable onImageLoaded;
+    private OnWikiImageShown onImageLoaded;
 
     /**
      * Constructs a image box that has the ability to grab a image from the wiki and show a spinner while it downloads.
@@ -53,10 +53,11 @@ public class WikiImage extends BorderPane {
      * @param pickLastPicture If true it will pick the last image it found. Useful for items not useful for monsters.
      * @param onImageLoaded A runnable that gets executed when the image is finally loaded.
      */
-    public WikiImage(String fileName, String url, boolean pickLastPicture, Runnable onImageLoaded) {
+    public WikiImage(String fileName, String url, boolean pickLastPicture, OnWikiImageShown onImageLoaded) {
         this.fileName = fileName;
         this.url = url;
         this.pickLastPicture = pickLastPicture;
+        this.onImageLoaded = onImageLoaded;
 
         if (fileName.isEmpty() || url.isEmpty())
             throw new Error("WikiImage must have a valid fileName and url.");
@@ -97,7 +98,7 @@ public class WikiImage extends BorderPane {
         setCenter(imageView);
 
         if (onImageLoaded != null) {
-            onImageLoaded.run();
+            onImageLoaded.onImageShown(this, imageView);
         }
     }
 

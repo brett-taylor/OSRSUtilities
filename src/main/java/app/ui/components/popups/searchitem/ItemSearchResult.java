@@ -17,7 +17,6 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.util.Duration;
 
-
 /**
  * The item result that will appear in a select item popup.
  * @author Brett Taylor
@@ -145,7 +144,7 @@ public class ItemSearchResult extends AnchorPane {
      * Selects this item searchitem result.
      */
     public void setSelectedBorder() {
-        background.setStroke(CSSColorParser.parseColor("-good-color"));
+        background.setStroke(CSSColorParser.parseColor("-accent-color"));
         background.setStrokeWidth(3);
     }
 

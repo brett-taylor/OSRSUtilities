@@ -1,6 +1,5 @@
 package app.ui.components.popups;
 
-import app.OSRSUtilities;
 import app.ui.components.buttons.CircularButton;
 import com.jfoenix.controls.JFXSpinner;
 import javafx.application.Platform;
@@ -91,9 +90,11 @@ public class DialogBox extends PopupMenu {
      * @param node The node to be added.
      */
     public static void addToButtonRow(Node node) {
-        if (dialogBox != null) {
-            dialogBox.buttonRow.getChildren().add(node);
-        }
+        Platform.runLater(() -> {
+            if (dialogBox != null) {
+                dialogBox.buttonRow.getChildren().add(node);
+            }
+        });
     }
 
     /**
@@ -190,5 +191,29 @@ public class DialogBox extends PopupMenu {
      */
     private void setHeading(String text) {
         heading.setText(text);
+    }
+
+    /**
+     * Sets a bit of code to be executed when the shortcut enter is pressed.
+     * @param runnable The code to be executed.
+     */
+    public static void setShortcutSuccess(Runnable runnable) {
+        dialogBox.setOnShortcutSuccess(runnable);
+    }
+
+    /**
+     * Sets a bit of code to be executed when the shortcut escape is pressed.
+     * @param runnable The code to be executed.
+     */
+    public static void setShortcutFailed(Runnable runnable) {
+        dialogBox.setOnShortcutFailed(runnable);
+    }
+
+    /**
+     * Sets a bit of code to be executed when the popup menu has shown itself.
+     * @param runnable The code to be executed.
+     */
+    public static void setPopupShowed(Runnable runnable) {
+        dialogBox.setOnPopupShowed(runnable);
     }
 }

@@ -117,6 +117,7 @@ public class DownloadsPage extends BasePage {
 
         DialogBox.placeInTopRight(close);
         DialogBox.showMenu(downloadAll, refreshAll, spacer, helpText);
+        DialogBox.setShortcutFailed(DialogBox::close);
     }
 
     /**

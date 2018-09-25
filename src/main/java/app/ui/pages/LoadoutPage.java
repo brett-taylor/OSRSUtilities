@@ -137,6 +137,9 @@ public class LoadoutPage extends BasePage {
                 close.setGlyph(FontAwesomeIcon.CHECK, null);
                 close.setOnClicked(DialogBox::close);
                 DialogBox.addToButtonRow(close);
+
+                DialogBox.setShortcutSuccess(DialogBox::close);
+                DialogBox.setShortcutFailed(DialogBox::close);
             });
         }).start();
     }

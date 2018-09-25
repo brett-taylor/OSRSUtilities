@@ -1,7 +1,7 @@
 package app.data.loadouts;
 
 /**
- * Stores what type of thumbnail it is and how it should load that thumbnail.
+ * Stores what type of image it is.
  * @author Brett Taylor
  */
 public enum LoadoutThumbnailType {

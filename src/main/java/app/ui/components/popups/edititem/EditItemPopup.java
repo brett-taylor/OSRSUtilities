@@ -96,16 +96,19 @@ public class EditItemPopup extends PopupMenu {
 
         CircularButton cancelledButton = CircularButton.failedButton();
         buttonRow.getChildren().add(cancelledButton);
-        cancelledButton.setOnClicked(() -> {
+        Runnable onCancel = () -> {
             startByeAnimation();
             if (onEditItemFailed != null) {
                 onEditItemFailed.run();
             }
-        });
+        };
+
+        cancelledButton.setOnClicked(onCancel);
+        setOnShortcutFailed(onCancel);
 
         CircularButton successButton = CircularButton.successButton();
         buttonRow.getChildren().add(successButton);
-        successButton.setOnClicked(() -> {
+        Runnable onSuccess = () -> {
             if (onEditItemSuccess != null) {
                 Item newItem = itemHotspot.getAttachedItem().getItem();
                 newItem.setStackSize(stackSize);
@@ -117,7 +120,10 @@ public class EditItemPopup extends PopupMenu {
             }
 
             startByeAnimation();
-        });
+        };
+
+        successButton.setOnClicked(onSuccess);
+        setOnShortcutSuccess(onSuccess);
 
         layout = new VBox();
         mainBody.getChildren().add(layout);

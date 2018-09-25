@@ -2,16 +2,19 @@ package app.ui.components.popups;
 
 import app.OSRSUtilities;
 import app.ui.FXMLElement;
+import app.ui.ShortcutManager;
 import javafx.animation.AnimationTimer;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
 import javafx.scene.control.Label;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
 
+import java.security.Key;
 import java.util.Objects;
 
 /**
@@ -63,6 +66,21 @@ public abstract class PopupMenu extends FXMLElement {
      * The vbox that sits inside the main layout. Controls the size of the popup.
      */
     protected VBox innerMainLayout;
+
+    /**
+     * Called when the shortcut enter is pressed.
+     */
+    private Runnable onShortcutSuccess;
+
+    /**
+     * Called when the shortcut exit is pressed.
+     */
+    private Runnable onShortcutFailed;
+
+    /**
+     * Called when the popup menu has shown itself.
+     */
+    private Runnable onPopupShowed;
 
     /**
      * Creates a popup.
@@ -134,6 +152,21 @@ public abstract class PopupMenu extends FXMLElement {
      * Called when the hello animation ends.
      */
     protected void endHelloAnimation() {
+        ShortcutManager.addShortcut(KeyCode.ENTER, () -> {
+            if (onShortcutSuccess != null) {
+                onShortcutSuccess.run();
+            }
+        });
+
+        ShortcutManager.addShortcut(KeyCode.ESCAPE, () -> {
+            if (onShortcutFailed != null) {
+                onShortcutFailed.run();
+            }
+        });
+
+        if (onPopupShowed != null) {
+            onPopupShowed.run();
+        }
     }
 
     /**
@@ -150,6 +183,9 @@ public abstract class PopupMenu extends FXMLElement {
             timeline.stop();
             this.endByeAnimation();
         });
+
+        ShortcutManager.clearShortcut(KeyCode.ENTER);
+        ShortcutManager.clearShortcut(KeyCode.ESCAPE);
     }
 
     /**
@@ -167,5 +203,29 @@ public abstract class PopupMenu extends FXMLElement {
     protected void setSize(int width, int height) {
         innerMainLayout.setPrefWidth(width);
         innerMainLayout.setPrefHeight(height);
+    }
+
+    /**
+     * Sets a bit of code to be executed when the shortcut enter is pressed.
+     * @param runnable The code to be executed.
+     */
+    public void setOnShortcutSuccess(Runnable runnable) {
+        this.onShortcutSuccess = runnable;
+    }
+
+    /**
+     * Sets a bit of code to be executed when the shortcut escape is pressed.
+     * @param runnable The code to be executed.
+     */
+    public void setOnShortcutFailed(Runnable runnable) {
+        this.onShortcutFailed = runnable;
+    }
+
+    /**
+     * Sets a bit of code to be executed when the popup menu has shown itself.
+     * @param runnable The code to be executed.
+     */
+    public void setOnPopupShowed(Runnable runnable) {
+        this.onPopupShowed = runnable;
     }
 }

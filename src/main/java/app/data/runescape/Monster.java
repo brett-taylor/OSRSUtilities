@@ -7,6 +7,10 @@ import app.data.SQLStatement;
 import app.data.tables.MonsterTable;
 import app.ui.components.popups.DialogBox;
 
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Represents an Monster from runescape.
  * @author Brett Taylor
@@ -98,5 +102,77 @@ public class Monster {
         if (!execute.isSuccessful()) {
             DialogBox.showError("Failed to delete Monsters with following url: " + url + ". \n" + execute.getErrorMessage());
         }
+    }
+
+    /**
+     * Loads a monster from the database with a given name.
+     * @param name The name of the monster.
+     */
+    public static Monster load(String name) {
+        SQLStatement sqlStatement = new SQLStatement("SELECT nameColumn, wikiURLColumn, wikiIDColumn FROM tableName WHERE nameColumn = monsterName;");
+        sqlStatement.bindParam("tableName", MonsterTable.TABLE_NAME);
+        sqlStatement.bindParam("nameColumn", MonsterTable.NAME_COLUMN_PK);
+        sqlStatement.bindParam("wikiURLColumn", MonsterTable.WIKI_URL_COLUMN);
+        sqlStatement.bindParam("wikiIDColumn", MonsterTable.WIKI_ID_COLUMN);
+        sqlStatement.bindStringParam("monsterName", name);
+
+        DatabaseSQLExecuteResult execute = DataManager.execute(sqlStatement);
+        if (!execute.isSuccessful()) {
+            DialogBox.showError("Failed to load monster with following name: " + name + ". \n" + execute.getErrorMessage());
+            return null;
+        }
+
+        try {
+            if (execute.getResultSet().next()) {
+                return new Monster(
+                        execute.getResultSet().getString(MonsterTable.NAME_COLUMN_PK),
+                        execute.getResultSet().getString(MonsterTable.WIKI_URL_COLUMN),
+                        execute.getResultSet().getInt(MonsterTable.WIKI_ID_COLUMN)
+                );
+            }
+        } catch (SQLException e) {
+            DialogBox.showError("Failed to load monster with following name: " + name + ". \n" + execute.getErrorMessage());
+            return null;
+        }
+
+        return null;
+    }
+
+    /**
+     * Gets all of the monsters that name matches the given pattern.
+     * @param phrase The pattern
+     * @return The list of monsters.
+     */
+    public static List<Monster> loadAllMonstersThatContainInName(String phrase) {
+        SQLStatement sqlStatement = new SQLStatement("SELECT monsterColumnName FROM tableName WHERE monsterColumnName LIKE monsterNamePhrase");
+        sqlStatement.bindParam("tableName", MonsterTable.TABLE_NAME);
+        sqlStatement.bindParam("monsterColumnName", MonsterTable.NAME_COLUMN_PK);
+        sqlStatement.bindStringParam("monsterNamePhrase", "%" + phrase + "%");
+
+        DatabaseSQLExecuteResult execute = DataManager.execute(sqlStatement);
+        if (!execute.isSuccessful()) {
+            DialogBox.showError("Failed to find monsters with following pattern in name. Pattern: " + phrase + ". \n" + execute.getErrorMessage());
+            return null;
+        }
+
+        List<String> monstersNames = new ArrayList<>();
+        try {
+            while (execute.getResultSet().next()) {
+                monstersNames.add(execute.getResultSet().getString(MonsterTable.NAME_COLUMN_PK));
+            }
+        } catch (SQLException e) {
+            DialogBox.showError("Failed to find monsters with following pattern in name. Pattern: " + phrase + ". \n" + execute.getErrorMessage());
+            return null;
+        }
+
+        ArrayList<Monster> monsters = new ArrayList<>();
+        for (String monsterName : monstersNames) {
+            Monster monster = load(monsterName);
+            if (monster != null) {
+                monsters.add(monster);
+            }
+        }
+
+        return monsters;
     }
 }

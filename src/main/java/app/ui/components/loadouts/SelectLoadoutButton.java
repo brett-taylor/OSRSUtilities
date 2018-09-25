@@ -1,4 +1,4 @@
-package app.ui.components.buttons;
+package app.ui.components.loadouts;
 
 import app.OSRSUtilities;
 import app.data.loadouts.Loadout;

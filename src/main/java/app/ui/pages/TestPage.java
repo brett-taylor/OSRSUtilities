@@ -1,9 +1,12 @@
 package app.ui.pages;
 
+import app.data.loadouts.LoadoutThumbnailType;
 import app.data.runescape.Item;
 import app.ui.components.items.ItemHotspot;
 import app.ui.components.items.ItemHover;
 import app.ui.components.items.ItemSprite;
+import app.ui.components.popups.createeditloadout.CreateEditLoadoutPopup;
+import app.ui.components.popups.createeditloadout.ThumbnailSearchResult;
 import app.ui.components.popups.searchitem.SelectItemPopup;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
@@ -22,20 +25,22 @@ public class TestPage extends BasePage {
 
     @Override
     public void onLoaded() {
-        ItemHotspot ih = new ItemHotspot();
-        ((AnchorPane) getParentElement()).getChildren().addAll(ih);
-        AnchorPane.setLeftAnchor(ih, 300d);
-        AnchorPane.setTopAnchor(ih, 300d);
+        Button button = new Button();
+        button.setText("Click here");
+        ((AnchorPane) getParentElement()).getChildren().addAll(button);
+        AnchorPane.setLeftAnchor(button, 300d);
+        AnchorPane.setTopAnchor(button, 300d);
 
-        Item item = Item.load("Rune pouch");
-        item.setStackSize(15643763);
-        item.getItemsInside().add(Item.load("Fire rune", 12500));
-        item.getItemsInside().add(Item.load("Law rune", 12500000));
-        item.getItemsInside().add(Item.load("Air rune", 125000));
+        button.setOnMouseClicked((e) -> {
+            CreateEditLoadoutPopup popup = new CreateEditLoadoutPopup(null);
+            popup.startHelloAnimation();
+        });
 
-        ih.attachItem(new ItemSprite(item));
 
-        ItemHover itemHover = new ItemHover(item);
+        ThumbnailSearchResult result = new ThumbnailSearchResult(null, LoadoutThumbnailType.SKILL, "Fishing", "/wiki/Fishing");
+        ((AnchorPane) getParentElement()).getChildren().addAll(result);
+        AnchorPane.setLeftAnchor(result, 300d);
+        AnchorPane.setTopAnchor(result, 500d);
     }
 
     @Override

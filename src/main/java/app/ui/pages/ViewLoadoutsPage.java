@@ -3,7 +3,8 @@ package app.ui.pages;
 import app.data.loadouts.Loadout;
 import app.data.loadouts.LoadoutManager;
 import app.ui.components.buttons.CircularButton;
-import app.ui.components.buttons.SelectLoadoutButton;
+import app.ui.components.loadouts.SelectLoadoutButton;
+import app.ui.components.popups.createeditloadout.CreateEditLoadoutPopup;
 import app.utils.CSSColorParser;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import javafx.application.Platform;
@@ -95,7 +96,8 @@ public class ViewLoadoutsPage extends BasePage {
      * Called when the add new loadout button has been clicked.
      */
     private void addNewLoadout() {
-
+        CreateEditLoadoutPopup popup = new CreateEditLoadoutPopup(null);
+        popup.startHelloAnimation();
     }
 
     /**
