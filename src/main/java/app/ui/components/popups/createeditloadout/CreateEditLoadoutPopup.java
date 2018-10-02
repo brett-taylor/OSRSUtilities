@@ -119,11 +119,11 @@ public class CreateEditLoadoutPopup extends PopupMenu {
         AnchorPane.setBottomAnchor(layout, 0d);
         AnchorPane.setLeftAnchor(layout, 0d);
         layout.setFillWidth(true);
-        layout.setAlignment(Pos.TOP_CENTER);
+        layout.setAlignment(Pos.CENTER);
         layout.setPadding(new Insets(5, 5, 5,5 ));
 
         addNameRow();
-        addSelectThumbnailRow();
+        //addSelectThumbnailRow();
         checkSubmitStatus();
     }
 

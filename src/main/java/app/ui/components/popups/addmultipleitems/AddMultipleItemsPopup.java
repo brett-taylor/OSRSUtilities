@@ -155,9 +155,10 @@ public class AddMultipleItemsPopup extends PopupMenu {
      */
     private void onItemHotspotClicked(Item currentSelectedItem) {
         startByeAnimation();
-        SelectItemPopup popup = SelectItemPopup.show();
-        popup.setOnSelectItemCancelled(this::startHelloAnimation);
+        SelectItemPopup popup = new SelectItemPopup();
+        popup.startHelloAnimation();
 
+        popup.setOnSelectItemCancelled(this::startHelloAnimation);
         popup.setOnSelectItemConfirmed((item) -> {
             itemHotspot.unattachItem();
             itemHotspot.attachItem(new ItemSprite(item));

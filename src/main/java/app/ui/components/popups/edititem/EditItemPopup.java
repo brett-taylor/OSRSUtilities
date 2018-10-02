@@ -166,7 +166,8 @@ public class EditItemPopup extends PopupMenu {
         itemHotspot.setShouldShowItemDetailsWhenHovered(false);
         itemHotspot.setOnMouseClicked((e) ->  {
             startByeAnimation();
-            SelectItemPopup popup = SelectItemPopup.show();
+            SelectItemPopup popup = new SelectItemPopup();
+            popup.startHelloAnimation();
             popup.setOnSelectItemCancelled(this::startHelloAnimation);
             popup.setOnSelectItemConfirmed((newItem) -> {
                 startHelloAnimation();

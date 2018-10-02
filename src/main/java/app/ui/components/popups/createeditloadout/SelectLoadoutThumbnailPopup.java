@@ -76,7 +76,7 @@ public class SelectLoadoutThumbnailPopup extends PopupMenu {
     private ThumbnailSearchResult currentThumbnailSearchResultSelected;
 
     /**
-     * Creates a popup that allows the user to create or edit a loadout.
+     * Creates a popup that allows the user to create or edit a loadouts thumbnail.
      */
     public SelectLoadoutThumbnailPopup() {
         heading.setText("Select a loadout thumbnail");

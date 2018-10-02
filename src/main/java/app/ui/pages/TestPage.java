@@ -36,6 +36,18 @@ public class TestPage extends BasePage {
             popup.startHelloAnimation();
         });
 
+        Button button2 = new Button();
+        button2.setText("Click here ples");
+        ((AnchorPane) getParentElement()).getChildren().addAll(button2);
+        AnchorPane.setLeftAnchor(button2, 400d);
+        AnchorPane.setTopAnchor(button2, 300d);
+
+        button2.setOnMouseClicked((e) -> {
+            SelectItemPopup popup = new SelectItemPopup();
+            popup.startHelloAnimation();
+            popup.setOnSelectItemConfirmed((item) -> System.out.println("Item PickeD: " + item.getName()));
+        });
+
 
         ThumbnailSearchResult result = new ThumbnailSearchResult(null, LoadoutThumbnailType.SKILL, "Fishing", "/wiki/Fishing");
         ((AnchorPane) getParentElement()).getChildren().addAll(result);

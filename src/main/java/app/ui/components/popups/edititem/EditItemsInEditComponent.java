@@ -96,7 +96,8 @@ public class EditItemsInEditComponent extends ScrollPane {
         ih.setOnMouseClicked((e) -> {
             if (ih.getAttachedItem() == null) {
                 editItemPopup.startByeAnimation();
-                SelectItemPopup selectItemPopup = SelectItemPopup.show();
+                SelectItemPopup selectItemPopup = new SelectItemPopup();
+                selectItemPopup.startHelloAnimation();
                 selectItemPopup.setOnSelectItemCancelled(() -> editItemPopup.startHelloAnimation());
                 selectItemPopup.setOnSelectItemConfirmed((newItem) -> {
                     editItemPopup.startByeAnimation();

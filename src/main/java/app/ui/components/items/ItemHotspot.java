@@ -255,7 +255,8 @@ public class ItemHotspot extends AnchorPane {
      */
     private void onMouseClicked(MouseEvent e) {
         if (getAttachedItem() == null) {
-            SelectItemPopup popup = SelectItemPopup.show();
+            SelectItemPopup popup = new SelectItemPopup();
+            popup.startHelloAnimation();
             popup.setOnSelectItemConfirmed((item) ->  {
                 createEditItemPopup(item, 1, false);
             });

@@ -1,61 +1,39 @@
 package app.ui.components.popups.searchitem;
 
-import app.OSRSUtilities;
 import app.data.runescape.Item;
-import app.ui.FXMLElement;
 import app.ui.components.buttons.CircularButton;
 import app.ui.components.buttons.SquareButton;
+import app.ui.components.popups.PopupMenu;
 import app.utils.CSSColorParser;
 import com.jfoenix.controls.JFXSpinner;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
-import javafx.animation.KeyFrame;
-import javafx.animation.KeyValue;
-import javafx.animation.Timeline;
 import javafx.application.Platform;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.FlowPane;
-import javafx.scene.layout.HBox;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
-import javafx.util.Duration;
 
 import java.util.*;
 
 /**
  * Popup that allows the user to select a item.
- * TO:DO Rewrite to be inherit popup menu rather than be its own fxml element.
  * @author Brett Taylor
  */
-public class SelectItemPopup extends FXMLElement {
-    /**
-     * The duration the hello and bye animations will last.
-     */
-    private static Duration HELLO_BYE_ANIMATION_TIME = Duration.millis(200);
-
-    /**
-     * The y position of where the dialog box will sit.
-     */
-    private static double FINAL_POSITION_Y = 25;
-
+public class SelectItemPopup extends PopupMenu {
     /**
      * The maximum amount of items to show.
      */
     private static int TOTAL_AMOUNT_OF_ITEMS_TO_SHOW = 50;
 
     /**
-     * The main background of the dialog box.
+     * Layout container.
      */
-    private HBox mainBackground;
-
-    /**
-     * The button that will hide the select item popup without doing anything.
-     */
-    private CircularButton byeButton;
+    private VBox layout;
 
     /**
      * The button that will choose the currently selected item.
@@ -63,24 +41,14 @@ public class SelectItemPopup extends FXMLElement {
     private CircularButton submitButton;
 
     /**
-     * Stores whether the submit button is activated or not.
+     * Boolean checking if the button can be submitted or not
      */
-    private boolean canBeSubmitted = false;
+    private boolean submitStatus = false;
 
     /**
-     * The item searchitem result area.
+     * Grid view.
      */
-    private FlowPane itemGrid;
-
-    /**
-     * The thread that searching for items will execute on.
-     */
-    private Thread searchThread;
-
-    /**
-     * The ItemSearchResult that has currently been selected.
-     */
-    private ItemSearchResult currentItemSearchResultSelected;
+    private FlowPane grid;
 
     /**
      * The listener to the OnSelectItemConfirmed event.
@@ -93,45 +61,56 @@ public class SelectItemPopup extends FXMLElement {
     private OnSelectItemCancelled onSelectItemCancelled;
 
     /**
-     * Constructor
+     * The thread that searching for items will execute on.
      */
-    private SelectItemPopup() {
-        super("/fxml/components/SelectItemPopup.fxml");
-        AnchorPane.setBottomAnchor(this, 0d);
-        AnchorPane.setLeftAnchor(this, 0d);
-        AnchorPane.setRightAnchor(this, 0d);
-        AnchorPane.setTopAnchor(this, 0d);
-        toFront();
+    private Thread searchThread;
 
-        mainBackground = (HBox) lookup("#mainBackground");
-        Objects.requireNonNull(mainBackground);
+    /**
+     * The ItemSearchResult that has currently been selected.
+     */
+    private ItemSearchResult currentItemSearchResultSelected;
 
-        HBox buttonRow = (HBox) lookup("#buttonRow");
-        Objects.requireNonNull(buttonRow);
+    /**
+    * Creates a popup that allows the user to choose a item.
+    */
+    public SelectItemPopup() {
+        heading.setText("Select a item");
+        setSize(700, 500);
 
-        byeButton = CircularButton.failedButton();
+        CircularButton byeButton = CircularButton.failedButton();
         buttonRow.getChildren().add(byeButton);
-        Runnable onBye = () -> {
-            hide();
+        Runnable onCancelled = () -> {
+            startByeAnimation();
             if (onSelectItemCancelled != null) {
                 onSelectItemCancelled.onCancelled();
             }
         };
-
-        byeButton.setOnClicked(onBye);
-
+        byeButton.setOnClicked(onCancelled);
+        setOnShortcutFailed(onCancelled);
 
         submitButton = CircularButton.successButton();
         buttonRow.getChildren().add(submitButton);
-        correctSubmitButton();
-        submitButton.setOnClicked(() -> {
-            if (canBeSubmitted) {
-                hide();
+        Runnable onSuccess = () -> {
+            if (submitStatus) {
+                startByeAnimation();
                 if (onSelectItemConfirmed != null) {
                     onSelectItemConfirmed.onSuccess(currentItemSearchResultSelected.getItem());
                 }
             }
-        });
+        };
+        submitButton.setOnClicked(onSuccess);
+
+        enableSubmitButton(false);
+
+        layout = new VBox();
+        mainBody.getChildren().add(layout);
+        AnchorPane.setTopAnchor(layout, 0d);
+        AnchorPane.setRightAnchor(layout, 0d);
+        AnchorPane.setBottomAnchor(layout, 0d);
+        AnchorPane.setLeftAnchor(layout, 0d);
+        layout.setFillWidth(true);
+        layout.setAlignment(Pos.TOP_CENTER);
+        layout.setPadding(new Insets(5, 5, 5,5 ));
 
         TextField searchBar = new TextField();
         searchBar.setPromptText("Search for a Item");
@@ -147,86 +126,65 @@ public class SelectItemPopup extends FXMLElement {
         searchButton.setGlyphSize(18);
         searchButton.setBackgroundColor(CSSColorParser.parseColor("-good-color"));
         searchButton.setBackgroundHoverColor(CSSColorParser.parseColor("-good-secondary-color"));
-        searchButton.setOnClicked(() -> search(searchBar.getText().trim()));
+        Runnable onSearchButtonClicked = () -> search(searchBar.getText().trim());
+        searchButton.setOnClicked(onSearchButtonClicked);
 
-        HBox searchBoxContainer = (HBox) lookup("#searchBoxContainer");
+        HBox searchBoxContainer = new HBox();
         Objects.requireNonNull(searchBoxContainer);
+        layout.getChildren().add(searchBoxContainer);
         searchBoxContainer.getChildren().add(searchBar);
         searchBoxContainer.getChildren().add(searchButton);
 
-        ScrollPane scrollPane = (ScrollPane) lookup("#scrollPane");
-        Objects.requireNonNull(scrollPane);
-        itemGrid = (FlowPane) scrollPane.getContent();
+        ScrollPane scrollPane = new ScrollPane();
+        layout.getChildren().add(scrollPane);
+        VBox.setVgrow(scrollPane, Priority.ALWAYS);
+        scrollPane.getStyleClass().add("edge-to-edge");
+        scrollPane.getStyleClass().add("invis-scrollpane");
+
+        grid = new FlowPane();
+        scrollPane.setContent(grid);
+        scrollPane.setFitToWidth(true);
+        scrollPane.setFitToHeight(true);
+        grid.setAlignment(Pos.CENTER);
+        grid.setHgap(5d);
+        grid.setVgap(5d);
+        grid.setPadding(new Insets(5, 0, 0,0));
 
         showCeneterLabel("Search for a item");
-    }
 
-    /**
-     * Creates and starts a select item popup
-     * @return The select item popup.
-     */
-    public static SelectItemPopup show() {
-        SelectItemPopup sip = new SelectItemPopup();
-        OSRSUtilities.getWindow().getMainLayout().getChildren().add(sip);
-        OSRSUtilities.getWindow().setSideBarEnabledStatus(false);
-        sip.startHelloAnimation();
-        return sip;
-    }
-
-    /**
-     * Starts the hello animation.
-     */
-    private void startHelloAnimation() {
-        setVisible(true);
-        mainBackground.setLayoutY(OSRSUtilities.getWindow().getPrimaryStage().getHeight() + 5);
-
-        Timeline timeline = new Timeline();
-        timeline.setCycleCount(1);
-        timeline.getKeyFrames().add(
-                new KeyFrame(HELLO_BYE_ANIMATION_TIME, new KeyValue(mainBackground.layoutYProperty(), FINAL_POSITION_Y)
-                ));
-        timeline.play();
-        timeline.setOnFinished(e ->  {
-            timeline.stop();
-            this.endHelloAnimation();
+        setOnShortcutSuccess(() -> {
+            if (searchBar.isFocused()) {
+                onSearchButtonClicked.run();
+                layout.requestFocus();
+            } else {
+                onSuccess.run();
+            }
         });
     }
 
     /**
-     * Called when the hello animation ends.
+     * Sets the listener to the OnSelectItemConfirmed event.
+     * @param onSelectItemConfirmed the listener.
      */
-    private void endHelloAnimation() {
+    public void setOnSelectItemConfirmed(OnSelectItemConfirmed onSelectItemConfirmed) {
+        this.onSelectItemConfirmed = onSelectItemConfirmed;
     }
 
     /**
-     * Starts the bye animation.
+     * Sets the listener to the OnSelectItemCancelled event.
+     * @param onSelectItemCancelled the listener.
      */
-    public void hide() {
-        Timeline timeline = new Timeline();
-        timeline.setCycleCount(1);
-        timeline.getKeyFrames().add(
-                new KeyFrame(HELLO_BYE_ANIMATION_TIME, new KeyValue(mainBackground.layoutYProperty(), OSRSUtilities.getWindow().getPrimaryStage().getHeight() + 5)
-                ));
-        timeline.play();
-        timeline.setOnFinished(e ->  {
-            timeline.stop();
-            this.endByeAnimation();
-        });
+    public void setOnSelectItemCancelled(OnSelectItemCancelled onSelectItemCancelled) {
+        this.onSelectItemCancelled = onSelectItemCancelled;
     }
 
     /**
-     * Called when the bye animation ends.
+     * Enables or disables the submit button.
+     * @param submitStatus True if the submit button should be enabled.
      */
-    private void endByeAnimation() {
-        OSRSUtilities.getWindow().getMainLayout().getChildren().remove(this);
-        OSRSUtilities.getWindow().setSideBarEnabledStatus(true);
-    }
-
-    /**
-     * Corrects the submit button colors depending on the canBeSubmitted boolean.
-     */
-    private void correctSubmitButton() {
-        if (canBeSubmitted) {
+    private void enableSubmitButton(boolean submitStatus) {
+        this.submitStatus = submitStatus;
+        if (this.submitStatus) {
             submitButton.setBackgroundColor(CSSColorParser.parseColor("-good-color"));
             submitButton.setBackgroundHoverColor(CSSColorParser.parseColor("-good-secondary-color"));
             submitButton.setGlyph(FontAwesomeIcon.CHECK, CSSColorParser.parseColor("-good-overlay-color"));
@@ -242,9 +200,9 @@ public class SelectItemPopup extends FXMLElement {
      * @param message the message to show
      */
     private void showCeneterLabel(String message) {
-        itemGrid.getChildren().clear();
-        itemGrid.setAlignment(Pos.CENTER);
         resetSelectedItemSearchResult();
+        grid.getChildren().clear();
+        grid.setAlignment(Pos.CENTER);
 
         Label label = new Label();
         label.setText(message);
@@ -252,19 +210,19 @@ public class SelectItemPopup extends FXMLElement {
         label.setFont(new Font("Open Sans", 13));
         label.setWrapText(true);
         label.setTextFill(CSSColorParser.parseColor("-text-muted-color"));
-        itemGrid.getChildren().add(label);
+        grid.getChildren().add(label);
     }
 
     /**
      * Shows a loading spinner.
      */
     private void showLoadingSpinner() {
-        itemGrid.getChildren().clear();
-        itemGrid.setAlignment(Pos.CENTER);
         resetSelectedItemSearchResult();
+        grid.getChildren().clear();
+        grid.setAlignment(Pos.CENTER);
 
         JFXSpinner spinner = new JFXSpinner();
-        itemGrid.getChildren().add(spinner);
+        grid.getChildren().add(spinner);
     }
 
     /**
@@ -277,6 +235,7 @@ public class SelectItemPopup extends FXMLElement {
             searchThread = null;
         }
 
+        resetSelectedItemSearchResult();
         if (phrase.isEmpty()) {
             showCeneterLabel("Search for a item");
             return;
@@ -293,7 +252,9 @@ public class SelectItemPopup extends FXMLElement {
 
             int currentAmountOfItems = 0;
             List<Node> searchResults = new ArrayList<>();
+            boolean firstItem = true;
             for (Item item : items) {
+
                 ItemSearchResult itemSearchResult = new ItemSearchResult(item);
                 itemSearchResult.setOnItemSearchResultClicked(this::onItemSearchResultClicked);
                 searchResults.add(itemSearchResult);
@@ -309,28 +270,20 @@ public class SelectItemPopup extends FXMLElement {
                     searchResults.add(label);
                     break;
                 }
+
+                if (firstItem) {
+                    Platform.runLater(() -> onItemSearchResultClicked(itemSearchResult, itemSearchResult.getItem()));
+                    firstItem = false;
+                }
             }
 
             Platform.runLater(() -> {
-                itemGrid.getChildren().clear();
-                itemGrid.setAlignment(Pos.CENTER);
-                itemGrid.getChildren().addAll(searchResults);
+                grid.getChildren().clear();
+                grid.setAlignment(Pos.CENTER);
+                grid.getChildren().addAll(searchResults);
             });
         });
         searchThread.start();
-    }
-
-    /**
-     * Resets the currently selected item searchitem result.
-     */
-    private void resetSelectedItemSearchResult() {
-        if (currentItemSearchResultSelected != null) {
-            currentItemSearchResultSelected.setNormalBorder();
-        }
-
-        currentItemSearchResultSelected = null;
-        canBeSubmitted = false;
-        correctSubmitButton();
     }
 
     /**
@@ -349,23 +302,18 @@ public class SelectItemPopup extends FXMLElement {
         }
         self.setSelectedBorder();
         currentItemSearchResultSelected = self;
-        canBeSubmitted = true;
-        correctSubmitButton();
+        enableSubmitButton(true);
     }
 
     /**
-     * Sets the listener to the OnSelectItemConfirmed event.
-     * @param onSelectItemConfirmed the listener.
+     * Resets the currently selected item searchitem result.
      */
-    public void setOnSelectItemConfirmed(OnSelectItemConfirmed onSelectItemConfirmed) {
-        this.onSelectItemConfirmed = onSelectItemConfirmed;
-    }
+    private void resetSelectedItemSearchResult() {
+        if (currentItemSearchResultSelected != null) {
+            currentItemSearchResultSelected.setNormalBorder();
+        }
 
-    /**
-     * Sets the listener to the OnSelectItemCancelled event.
-     * @param onSelectItemCancelled the listener.
-     */
-    public void setOnSelectItemCancelled(OnSelectItemCancelled onSelectItemCancelled) {
-        this.onSelectItemCancelled = onSelectItemCancelled;
+        currentItemSearchResultSelected = null;
+        enableSubmitButton(false);
     }
 }
