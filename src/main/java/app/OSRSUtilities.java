@@ -19,7 +19,7 @@ public class OSRSUtilities extends Application {
     /**
      * The address of the wiki
      */
-    public static final String WIKI_ADDRESS = "http://oldschoolrunescape.wikia.com/";
+    public static final String WIKI_ADDRESS = "http://oldschool.runescape.wiki/";
 
     /**
      * The main window.

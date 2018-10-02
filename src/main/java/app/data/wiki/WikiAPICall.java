@@ -11,6 +11,7 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
+import java.util.Arrays;
 
 /**
  * Will be used to
@@ -20,7 +21,7 @@ public class WikiAPICall {
     /**
      * Holds the osrs app.data.wiki address.
      */
-    private final static String WIKI_API_ADDRESS = OSRSUtilities.WIKI_ADDRESS + "api/v1/Articles/";
+    private final static String WIKI_API_ADDRESS = OSRSUtilities.WIKI_ADDRESS + "api.php?";
 
     /**
      * Holds any error messages that were created from attempting to call the api.
@@ -45,6 +46,7 @@ public class WikiAPICall {
         URL url;
         try {
             url = new URL(WIKI_API_ADDRESS + api);
+            System.out.println(WIKI_API_ADDRESS + api);
         } catch (MalformedURLException e) {
             errorMessage = "MalformedURLException: " + e.getMessage();
             return;
@@ -68,14 +70,18 @@ public class WikiAPICall {
         BufferedReader rd = null;
         try {
             rd = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-            result = new JsonParser().parse(rd.readLine());
+            String s = rd.readLine();
+            System.out.println("tewst: " + conn.getResponseMessage());
+            //result = new JsonParser().parse(rd.readLine());
             rd.close();
+            return;
         } catch (IOException e) {
+            System.out.println(e.getMessage());
             errorMessage = "IOException: " + e.getMessage();
             return;
         }
 
-        isSuccessful = true;
+        //isSuccessful = true;
     }
 
     /**

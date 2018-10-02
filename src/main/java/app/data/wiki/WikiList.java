@@ -29,13 +29,13 @@ public class WikiList {
      * @param amount The amount.
      */
     private WikiList(DownloadCategories category, int amount) {
-        String api = "List?category=" + category.getWikiCategoryName() + "&limit=" + amount + "";
+        String api = "format=json&action=query&list=categorymembers&cmtitle=Category:" + category.getWikiCategoryName() + "&cmlimit=" + amount + "";
         call = new WikiAPICall(api);
 
         if (!call.isSuccessful())
             return;
 
-        JsonArray array = call.getResult().getAsJsonObject().getAsJsonArray("items");
+        JsonArray array = call.getResult().getAsJsonObject().getAsJsonArray("query").getAsJsonObject().getAsJsonArray("categorymembers");
         for (JsonElement element : array) {
             JsonObject json = element.getAsJsonObject();
             HashMap<WikiListValues, Object> value = new HashMap<>();
